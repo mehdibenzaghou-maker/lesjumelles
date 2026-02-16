@@ -3,30 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Restaurant Les Jumelles</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Menu Gastronomique | Les Jumelles</title>
     
-    <!-- Google Fonts - Elegant Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Model Viewer for 3D dishes -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Model Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-    <!-- Navigation Header -->
+    <!-- Header -->
     <header class="main-header">
         <div class="header-content">
             <div class="logo-container">
-                <img src="jmlogo.JPG" alt="Restaurant Les Jumelles Logo" class="logo">
+                <img src="images/logo.png" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
                 <div class="logo-text">
                     <h1>Les Jumelles</h1>
-                    <p class="tagline">Cuisine d'Excellence</p>
+                    <p class="tagline">Depuis 1920</p>
                 </div>
             </div>
             
@@ -34,11 +25,11 @@
                 <ul>
                     <li><a href="index.html" class="nav-link">Accueil</a></li>
                     <li><a href="menu.html" class="nav-link active">Menu</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="contact.html" class="nav-link">Réservation</a></li>
                 </ul>
             </nav>
             
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <button class="mobile-menu-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -51,1491 +42,1810 @@
         <ul>
             <li><a href="index.html" class="nav-link">Accueil</a></li>
             <li><a href="menu.html" class="nav-link">Menu</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="contact.html" class="nav-link">Réservation</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content Container -->
-    <main class="main-content">
-        
-        <!-- MENU PAGE -->
-        <section id="menu" class="page active-page">
-            <div class="page-header">
-                <h2 class="page-title">Notre Menu</h2>
-                <div class="golden-line"></div>
-                <p class="page-subtitle">Découvrez nos créations culinaires</p>
-            </div>
+    <!-- Menu Header -->
+    <div class="menu-header">
+        <h1 class="menu-title">Notre Menu</h1>
+        <div class="menu-divider"></div>
+        <p class="menu-subtitle">Une expérience visuelle et gustative unique</p>
+    </div>
+
+    <div class="menu-container">
+        <!-- ENTRÉES FROIDES -->
+        <section class="menu-section">
+            <h2 class="section-title">Entrées Froides</h2>
             
-            <div class="container">
-                
-                <!-- ENTRÉES FROIDES Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Entrées Froides</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="entree_froide_1.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
+            <div class="dishes-grid">
+                <!-- Salade César -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2c2.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Salade César"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
                             </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Salade César</h4>
-                                <span class="dish-price">900 DA</span>
-                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Salade César</h3>
+                        <p class="dish-description">Laitue romaine, poulet grillé, parmesan, sauce anchois</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">900 <small>DA</small></span>
+                            <span class="dish-badge">Classique</span>
                         </div>
-
-                        <div class="dish-card" data-model="entree_froide_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Buratta</h4>
-                                <span class="dish-price">1600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_froide_3.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Salade de Poulpe</h4>
-                                <span class="dish-price">1600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_froide_4.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Trio Crevette à l'Avocat</h4>
-                                <span class="dish-price">1800 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_froide_5.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Salade Maison (Jumelles)</h4>
-                                <span class="dish-price">2200 DA</span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
-                <!-- ENTRÉES CHAUDES Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Entrées Chaudes</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Borak%20jm.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
+                <!-- Buratta -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2c3.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Buratta"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
                             </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Bourek Fruit de Mer</h4>
-                                <span class="dish-price">500 DA</span>
-                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Buratta</h3>
+                        <p class="dish-description">Fromage crémeux, tomates cerises, basilic frais, huile d'olive</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1600 <small>DA</small></span>
+                            <span class="dish-badge">Italie</span>
                         </div>
-
-                        <div class="dish-card" data-model="entree_chaude_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Soupe du Jour</h4>
-                                <span class="dish-price">500 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_3.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Hrira + Bourek</h4>
-                                <span class="dish-price">600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_4.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Soupe de Poisson</h4>
-                                <span class="dish-price">600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_5.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Brike Annabien</h4>
-                                <span class="dish-price">700 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_6.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Bastila</h4>
-                                <span class="dish-price">800 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_7.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Camembert Rôti au Four</h4>
-                                <span class="dish-price">900 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_8.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Gratin Poulet</h4>
-                                <span class="dish-price">1200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_9.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Bastila Fruit de Mer</h4>
-                                <span class="dish-price">1200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_10.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Crevettes Japonaises</h4>
-                                <span class="dish-price">1600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="entree_chaude_11.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Gratin Fruits de Mer</h4>
-                                <span class="dish-price">1700 DA</span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
-                <!-- NOS PLATS Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Nos Plats</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="plat_1.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
+                <!-- Salade de Poulpe -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2c4.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Salade de Poulpe"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
                             </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Cordon Bleu</h4>
-                                <span class="dish-price">1800 DA</span>
-                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Salade de Poulpe</h3>
+                        <p class="dish-description">Poulpe tendre, pommes de terre, persil, citron confit</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1600 <small>DA</small></span>
+                            <span class="dish-badge">Méditerranée</span>
                         </div>
-
-                        <div class="dish-card" data-model="plat_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Suprême de Poulet à la Crème</h4>
-                                <span class="dish-price">1900 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_3.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Poulet Italien</h4>
-                                <span class="dish-price">2000 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_4.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Entrecôte de Bœuf Grillée</h4>
-                                <span class="dish-price">2800 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_5.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Médaillon de Bœuf (Sauce Demi-glace)</h4>
-                                <span class="dish-price">3000 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_6.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Foie d'Agneau</h4>
-                                <span class="dish-price">3400 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_7.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Filet de Bœuf</h4>
-                                <span class="dish-price">3500 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_8.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Noisette d'Agneau</h4>
-                                <span class="dish-price">3500 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_9.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Assiette Boucher</h4>
-                                <span class="dish-price">4200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_10.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Méchoui</h4>
-                                <span class="dish-price">4200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="plat_11.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Mhamar</h4>
-                                <span class="dish-price">4200 DA</span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
-                <!-- NOS SPÉCIALITÉS Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Nos Spécialités</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="specialite_1.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
+                <!-- Trio Crevette -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2c5.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Trio Crevette"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
                             </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Sardine</h4>
-                                <span class="dish-price">1800 DA</span>
-                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Trio Crevette à l'Avocat</h3>
+                        <p class="dish-description">Crevettes, avocat, mangue, vinaigrette citronnée</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1800 <small>DA</small></span>
+                            <span class="dish-badge">Signature</span>
                         </div>
-
-                        <div class="dish-card" data-model="specialite_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Zitoune</h4>
-                                <span class="dish-price">1800 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="specialite_3.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Dorade</h4>
-                                <span class="dish-price">2000 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="specialite_4.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Espadon</h4>
-                                <span class="dish-price">3500 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="specialite_5.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Calamar</h4>
-                                <span class="dish-price">3500 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="specialite_6.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Viande</h4>
-                                <span class="dish-price">3700 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="specialite_7.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Hlou</h4>
-                                <span class="dish-price">3700 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="specialite_8.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Saumon</h4>
-                                <span class="dish-price">4100 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="specialite_9.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tajine Fruits de Mer</h4>
-                                <span class="dish-price">4500 DA</span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
-                <!-- NOS TRADITIONS Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Nos Traditions</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="tradition_1.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
+                <!-- Salade Maison -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2c6.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Salade Maison"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
                             </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Safa</h4>
-                                <span class="dish-price">1000 DA</span>
-                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Salade Maison (Jumelles)</h3>
+                        <p class="dish-description">Notre création signature, mesclun, fruits secs, fromage de chèvre</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2200 <small>DA</small></span>
+                            <span class="dish-badge">Maison</span>
                         </div>
-
-                        <div class="dish-card" data-model="tradition_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Rechta Poulet</h4>
-                                <span class="dish-price">1600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_3.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Rogag Poulet</h4>
-                                <span class="dish-price">1600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_4.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Couscous Viande de Veau</h4>
-                                <span class="dish-price">2200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_5.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Rechta Viande de Veau</h4>
-                                <span class="dish-price">2200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_6.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Rogag Viande de Veau</h4>
-                                <span class="dish-price">2200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_7.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Mtaouem</h4>
-                                <span class="dish-price">2500 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_8.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Couscous Royal</h4>
-                                <span class="dish-price">3600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_9.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Couscous Viande d'Agneau</h4>
-                                <span class="dish-price">3700 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_10.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Rechta Viande d'Agneau</h4>
-                                <span class="dish-price">3700 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="tradition_11.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Rogag Viande d'Agneau</h4>
-                                <span class="dish-price">3700 DA</span>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-
-                <!-- NOS POISSONS Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Nos Poissons</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="poisson_1.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Paella Fruit de Mer</h4>
-                                <span class="dish-price">3200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="poisson_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Paella Royal</h4>
-                                <span class="dish-price">3800 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="poisson_3.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Mixé de Poisson pour une Personne</h4>
-                                <span class="dish-price">4200 DA</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- NOS PÂTES Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Nos Pâtes</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="pate_1.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Spaghetti Bolognaise</h4>
-                                <span class="dish-price">1500 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="pate_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tagliatelle Alfredo</h4>
-                                <span class="dish-price">1600 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="pate_3.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tagliatelle au Norvégien</h4>
-                                <span class="dish-price">2200 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="pate_4.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Tagliatelle Fruit de Mer</h4>
-                                <span class="dish-price">2600 DA</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- MENU ENFANT Section -->
-                <div class="menu-section">
-                    <h3 class="section-title">Menu Enfant</h3>
-                    <div class="dishes-grid">
-                        
-                        <div class="dish-card" data-model="enfant_1.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Nuggets de Poulet</h4>
-                                <span class="dish-price">1000 DA</span>
-                            </div>
-                        </div>
-
-                        <div class="dish-card" data-model="enfant_2.glb">
-                            <div class="dish-model-container">
-                                <model-viewer
-                                    class="dish-model"
-                                    loading="lazy"
-                                    reveal="interaction"
-                                    camera-controls
-                                    auto-rotate
-                                    auto-rotate-delay="1000"
-                                    rotation-per-second="30deg"
-                                    shadow-intensity="1"
-                                    ar
-                                    ar-modes="webxr scene-viewer quick-look">
-                                    <div class="model-placeholder">
-                                        <i class="fas fa-cube"></i>
-                                        <p>Modèle 3D</p>
-                                    </div>
-                                </model-viewer>
-                            </div>
-                            <div class="dish-info">
-                                <h4 class="dish-name">Cheese + Barquette de Frites + Boisson</h4>
-                                <span class="dish-price">1000 DA</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
             </div>
         </section>
 
-    </main>
+        <!-- ENTRÉES CHAUDES -->
+        <section class="menu-section">
+            <h2 class="section-title">Entrées Chaudes</h2>
+            
+            <div class="dishes-grid">
+                <!-- Bourek Fruit de Mer -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Borak%20jm.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Bourek Fruit de Mer"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Bourek Fruit de Mer</h3>
+                        <p class="dish-description">Feuilles de brick croustillantes, fruits de mer, sauce crémeuse</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">500 <small>DA</small></span>
+                            <span class="dish-badge">Spécialité</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soupe du Jour -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2c8.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Soupe du Jour"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Soupe du Jour</h3>
+                        <p class="dish-description">Création du chef selon les arrivages</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">500 <small>DA</small></span>
+                            <span class="dish-badge">Du jour</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hrira + Bourek -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2c9.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Hrira + Bourek"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Hrira + Bourek</h3>
+                        <p class="dish-description">Soupe traditionnelle accompagnée de bourek</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">600 <small>DA</small></span>
+                            <span class="dish-badge">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soupe de Poisson -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d0.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Soupe de Poisson"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Soupe de Poisson</h3>
+                        <p class="dish-description">Poissons frais, safran, rouille et croûtons</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">600 <small>DA</small></span>
+                            <span class="dish-badge">Marin</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brike Annabien -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d1.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Brike Annabien"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Brike Annabien</h3>
+                        <p class="dish-description">Œuf, thon, câpres, persil dans une brick croustillante</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">700 <small>DA</small></span>
+                            <span class="dish-badge">Annabi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bastila -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d2.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Bastila"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Bastila</h3>
+                        <p class="dish-description">Feilleté au poulet, amandes, cannelle, sucre glace</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">800 <small>DA</small></span>
+                            <span class="dish-badge">Fassi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camembert Rôti -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d3.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Camembert Rôti"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Camembert Rôti au Four</h3>
+                        <p class="dish-description">Camembert entier rôti, miel, thym, pain toasté</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">900 <small>DA</small></span>
+                            <span class="dish-badge">Normand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gratin Poulet -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d4.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Gratin Poulet"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Gratin Poulet</h3>
+                        <p class="dish-description">Émincé de poulet, champignons, sauce béchamel, gratiné</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1200 <small>DA</small></span>
+                            <span class="dish-badge">Gratiné</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bastila Fruit de Mer -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d5.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Bastila Fruit de Mer"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Bastila Fruit de Mer</h3>
+                        <p class="dish-description">Notre bastila revisité aux fruits de mer</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1200 <small>DA</small></span>
+                            <span class="dish-badge">Signature</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crevettes Japonaises -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d6.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Crevettes Japonaises"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Crevettes Japonaises</h3>
+                        <p class="dish-description">Crevettes sautées, sauce teriyaki, sésame</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1600 <small>DA</small></span>
+                            <span class="dish-badge">Fusion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gratin Fruits de Mer -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d7.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Gratin Fruits de Mer"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Gratin Fruits de Mer</h3>
+                        <p class="dish-description">Mélange de fruits de mer, sauce crémée, gratiné au parmesan</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1700 <small>DA</small></span>
+                            <span class="dish-badge">Gratiné</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOS PLATS -->
+        <section class="menu-section">
+            <h2 class="section-title">Nos Plats</h2>
+            
+            <div class="dishes-grid">
+                <!-- Cordon Bleu -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d8.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Cordon Bleu"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Cordon Bleu</h3>
+                        <p class="dish-description">Escalope de poulet panée, jambon, fromage, sauce champignon</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1800 <small>DA</small></span>
+                            <span class="dish-badge">Classique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suprême de Poulet -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f2d9.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Suprême de Poulet"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Suprême de Poulet à la Crème</h3>
+                        <p class="dish-description">Filet de poulet, sauce crémeuse aux morilles, riz sauvage</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1900 <small>DA</small></span>
+                            <span class="dish-badge">Gourmand</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poulet Italien -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d0.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Poulet Italien"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Poulet Italien</h3>
+                        <p class="dish-description">Poulet rôti, tomates confites, olives, herbes de Provence</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2000 <small>DA</small></span>
+                            <span class="dish-badge">Italie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entrecôte de Bœuf -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d1.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Entrecôte de Bœuf"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Entrecôte de Bœuf Grillée</h3>
+                        <p class="dish-description">Pièce de bœuf grillée, sauce béarnaise, pommes frites maison</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2800 <small>DA</small></span>
+                            <span class="dish-badge">Grillade</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Médaillon de Bœuf -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d2.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Médaillon de Bœuf"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Médaillon de Bœuf</h3>
+                        <p class="dish-description">Médaillon de bœuf tendre, sauce demi-glace, légumes de saison</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3000 <small>DA</small></span>
+                            <span class="dish-badge">Premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foie d'Agneau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d3.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Foie d'Agneau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Foie d'Agneau</h3>
+                        <p class="dish-description">Foie d'agneau poêlé, sauce à l'échalote, purée maison</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3400 <small>DA</small></span>
+                            <span class="dish-badge">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filet de Bœuf -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d4.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Filet de Bœuf"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Filet de Bœuf</h3>
+                        <p class="dish-description">Filet de bœuf grillé, sauce poivre vert, gratin dauphinois</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3500 <small>DA</small></span>
+                            <span class="dish-badge">Signature</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Noisette d'Agneau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d5.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Noisette d'Agneau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Noisette d'Agneau</h3>
+                        <p class="dish-description">Noisettes d'agneau rôties, jus thym, flageolets</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3500 <small>DA</small></span>
+                            <span class="dish-badge">Agneau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assiette Boucher -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d6.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Assiette Boucher"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Assiette Boucher</h3>
+                        <p class="dish-description">Sélection de viandes grillées, sauce barbecue maison, frites</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">4200 <small>DA</small></span>
+                            <span class="dish-badge">Partage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Méchoui -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d7.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Méchoui"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Méchoui</h3>
+                        <p class="dish-description">Agneau rôti à la broche, cumin, sel de mer</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">4200 <small>DA</small></span>
+                            <span class="dish-badge">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mhamar -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d8.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Mhamar"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Mhamar</h3>
+                        <p class="dish-description">Viande d'agneau confite, oignons, raisins, amandes</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">4200 <small>DA</small></span>
+                            <span class="dish-badge">Spécialité</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOS SPÉCIALITÉS -->
+        <section class="menu-section">
+            <h2 class="section-title">Nos Spécialités</h2>
+            
+            <div class="dishes-grid">
+                <!-- Tajine Sardine -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f3d9.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Sardine"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Sardine</h3>
+                        <p class="dish-description">Sardines fraîches, tomates, olives, citron confit</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1800 <small>DA</small></span>
+                            <span class="dish-badge">Marin</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Zitoune -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d0.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Zitoune"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Zitoune</h3>
+                        <p class="dish-description">Viande d'agneau, olives vertes, citron confit</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1800 <small>DA</small></span>
+                            <span class="dish-badge">Olives</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Dorade -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d1.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Dorade"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Dorade</h3>
+                        <p class="dish-description">Dorade royale, légumes confits, safran</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2000 <small>DA</small></span>
+                            <span class="dish-badge">Poisson</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Espadon -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d2.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Espadon"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Espadon</h3>
+                        <p class="dish-description">Espadon grillé, sauce chermoula, légumes rôtis</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3500 <small>DA</small></span>
+                            <span class="dish-badge">Premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Calamar -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d3.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Calamar"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Calamar</h3>
+                        <p class="dish-description">Calamars tendres, sauce tomate épicée, poivrons</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3500 <small>DA</small></span>
+                            <span class="dish-badge">Calamar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Viande -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d4.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Viande"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Viande</h3>
+                        <p class="dish-description">Viande de bœuf confite, pruneaux, amandes</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3700 <small>DA</small></span>
+                            <span class="dish-badge">Viande</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Hlou -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d5.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Hlou"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Hlou</h3>
+                        <p class="dish-description">Agneau aux pruneaux, abricots, cannelle, sésame</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3700 <small>DA</small></span>
+                            <span class="dish-badge">Sucré-Salé</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Saumon -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d6.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Saumon"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Saumon</h3>
+                        <p class="dish-description">Saumon frais, épinards, pois chiches, citron</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">4100 <small>DA</small></span>
+                            <span class="dish-badge">Saumon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tajine Fruits de Mer -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d7.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tajine Fruits de Mer"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tajine Fruits de Mer</h3>
+                        <p class="dish-description">Mélange de fruits de mer, sauce safranée, légumes croquants</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">4500 <small>DA</small></span>
+                            <span class="dish-badge">Royal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOS TRADITIONS -->
+        <section class="menu-section">
+            <h2 class="section-title">Nos Traditions</h2>
+            
+            <div class="dishes-grid">
+                <!-- Safa -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d8.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Safa"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Safa</h3>
+                        <p class="dish-description">Spécialité traditionnelle aux légumes et viande</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1000 <small>DA</small></span>
+                            <span class="dish-badge">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rechta Poulet -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f4d9.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Rechta Poulet"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Rechta Poulet</h3>
+                        <p class="dish-description">Pâtes fraîches maison, poulet, pois chiches, cannelle</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1600 <small>DA</small></span>
+                            <span class="dish-badge">Algeroise</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rogag Poulet -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d0.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Rogag Poulet"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Rogag Poulet</h3>
+                        <p class="dish-description">Galettes traditionnelles, poulet, sauce parfumée</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1600 <small>DA</small></span>
+                            <span class="dish-badge">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Couscous Veau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d1.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Couscous Veau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Couscous Viande de Veau</h3>
+                        <p class="dish-description">Couscous aux légumes, viande de veau tendre, bouillon parfumé</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2200 <small>DA</small></span>
+                            <span class="dish-badge">Couscous</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rechta Veau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d2.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Rechta Veau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Rechta Viande de Veau</h3>
+                        <p class="dish-description">Pâtes fraîches, viande de veau, pois chiches, cannelle</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2200 <small>DA</small></span>
+                            <span class="dish-badge">Rechta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rogag Veau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d3.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Rogag Veau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Rogag Viande de Veau</h3>
+                        <p class="dish-description">Galettes traditionnelles, veau, sauce parfumée</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2200 <small>DA</small></span>
+                            <span class="dish-badge">Rogag</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mtaouem -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d4.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Mtaouem"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Mtaouem</h3>
+                        <p class="dish-description">Spécialité constantinoise, viande, pois chiches, oignons</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2500 <small>DA</small></span>
+                            <span class="dish-badge">Constantinois</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Couscous Royal -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d5.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Couscous Royal"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Couscous Royal</h3>
+                        <p class="dish-description">Couscous aux légumes, agneau, poulet, merguez</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3600 <small>DA</small></span>
+                            <span class="dish-badge">Royal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Couscous Agneau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d6.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Couscous Agneau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Couscous Viande d'Agneau</h3>
+                        <p class="dish-description">Couscous aux légumes, agneau confit, bouillon parfumé</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3700 <small>DA</small></span>
+                            <span class="dish-badge">Agneau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rechta Agneau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d7.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Rechta Agneau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Rechta Viande d'Agneau</h3>
+                        <p class="dish-description">Pâtes fraîches, agneau, pois chiches, cannelle</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3700 <small>DA</small></span>
+                            <span class="dish-badge">Rechta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rogag Agneau -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d8.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Rogag Agneau"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Rogag Viande d'Agneau</h3>
+                        <p class="dish-description">Galettes traditionnelles, agneau, sauce parfumée</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3700 <small>DA</small></span>
+                            <span class="dish-badge">Rogag</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOS POISSONS -->
+        <section class="menu-section">
+            <h2 class="section-title">Nos Poissons</h2>
+            
+            <div class="dishes-grid">
+                <!-- Paella Fruit de Mer -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f5d9.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Paella Fruit de Mer"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Paella Fruit de Mer</h3>
+                        <p class="dish-description">Riz safrané, moules, crevettes, calamars, poissons</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3200 <small>DA</small></span>
+                            <span class="dish-badge">Espagnole</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paella Royal -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d0.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Paella Royal"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Paella Royal</h3>
+                        <p class="dish-description">Paella aux fruits de mer, poulet, chorizo, légumes</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">3800 <small>DA</small></span>
+                            <span class="dish-badge">Royale</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mixé de Poisson -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d1.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Mixé de Poisson"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Mixé de Poisson pour une Personne</h3>
+                        <p class="dish-description">Assortiment de poissons grillés, sauce, légumes de saison</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">4200 <small>DA</small></span>
+                            <span class="dish-badge">Dégustation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOS PÂTES -->
+        <section class="menu-section">
+            <h2 class="section-title">Nos Pâtes</h2>
+            
+            <div class="dishes-grid">
+                <!-- Spaghetti Bolognaise -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d2.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Spaghetti Bolognaise"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Spaghetti Bolognaise</h3>
+                        <p class="dish-description">Sauce bolognaise maison, parmesan, basilic frais</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1500 <small>DA</small></span>
+                            <span class="dish-badge">Italie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tagliatelle Alfredo -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d3.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tagliatelle Alfredo"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tagliatelle Alfredo</h3>
+                        <p class="dish-description">Sauce crémeuse, parmesan, poulet grillé</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1600 <small>DA</small></span>
+                            <span class="dish-badge">Crémeuse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tagliatelle Norvégien -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d4.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tagliatelle Norvégien"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tagliatelle au Norvégien</h3>
+                        <p class="dish-description">Saumon fumé, sauce crémeuse, aneth, citron</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2200 <small>DA</small></span>
+                            <span class="dish-badge">Saumon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tagliatelle Fruit de Mer -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d5.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Tagliatelle Fruit de Mer"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Tagliatelle Fruit de Mer</h3>
+                        <p class="dish-description">Mélange de fruits de mer, sauce tomate ou crémeuse</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">2600 <small>DA</small></span>
+                            <span class="dish-badge">Marin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU ENFANT -->
+        <section class="menu-section">
+            <h2 class="section-title">Menu Enfant</h2>
+            
+            <div class="dishes-grid">
+                <!-- Nuggets -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d6.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Nuggets"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Nuggets de Poulet</h3>
+                        <p class="dish-description">Nuggets de poulet maison, frites, sauce</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1000 <small>DA</small></span>
+                            <span class="dish-badge">Enfant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cheese Burger -->
+                <div class="dish-card">
+                    <div class="model-wrapper">
+                        <model-viewer
+                            src="https://models.readyplayer.me/67c8c0c7a0eb84f481d7f6d7.glb"
+                            camera-controls
+                            auto-rotate
+                            auto-rotate-delay="1000"
+                            rotation-per-second="30deg"
+                            shadow-intensity="1"
+                            alt="Cheese Burger"
+                            loading="lazy">
+                            <div class="model-placeholder" slot="poster">
+                                <i class="fas fa-cube"></i>
+                                <p>Chargement 3D...</p>
+                            </div>
+                        </model-viewer>
+                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
+                            <i class="fas fa-cube"></i> Voir en 3D
+                        </button>
+                    </div>
+                    <div class="dish-info">
+                        <h3 class="dish-name">Cheese Burger</h3>
+                        <p class="dish-description">Steak haché, cheddar, salade, tomate + frites + boisson</p>
+                        <div class="dish-footer">
+                            <span class="dish-price">1000 <small>DA</small></span>
+                            <span class="dish-badge">Enfant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -1543,15 +1853,16 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <h3>Les Jumelles</h3>
-                    <p>Cuisine d'Excellence</p>
+                    <p>Depuis 1920</p>
                 </div>
                 <div class="footer-text">
-                    <p>&copy; 2024 Restaurant Les Jumelles. Tous droits réservés.</p>
+                    <p>© 2024 Restaurant Les Jumelles - Tous droits réservés</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
 </html>
