@@ -44,12 +44,10 @@ function initMobileMenu() {
         }
     });
 
-    // Fermer le menu quand on clique sur un lien
     document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
         link.addEventListener('click', closeMobileMenu);
     });
 
-    // Fermer le menu en cliquant à l'extérieur
     document.addEventListener('click', function(e) {
         if (mobileNav.classList.contains('active') && 
             !mobileNav.contains(e.target) && 
@@ -58,7 +56,6 @@ function initMobileMenu() {
         }
     });
 
-    // Fermer avec la touche Echap
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
             closeMobileMenu();
@@ -132,6 +129,7 @@ function initReservationForm() {
         window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
         showNotification('Réservation envoyée !', 'success');
         reservationForm.reset();
+        initDatePickers(); // Reset des dates
     });
 }
 
@@ -181,8 +179,8 @@ function initBackToTop() {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: var(--gold-primary, #C5A028);
-        color: var(--ebony, #0A0A0A);
+        background: #C5A028;
+        color: #0A0A0A;
         border: none;
         cursor: pointer;
         display: none;
@@ -205,14 +203,14 @@ function initBackToTop() {
     });
 
     btn.addEventListener('mouseenter', function() {
-        this.style.background = 'var(--burgundy, #800020)';
-        this.style.color = 'var(--gold-primary, #C5A028)';
+        this.style.background = '#800020';
+        this.style.color = '#C5A028';
         this.style.transform = 'translateY(-5px)';
     });
 
     btn.addEventListener('mouseleave', function() {
-        this.style.background = 'var(--gold-primary, #C5A028)';
-        this.style.color = 'var(--ebony, #0A0A0A)';
+        this.style.background = '#C5A028';
+        this.style.color = '#0A0A0A';
         this.style.transform = 'translateY(0)';
     });
 }
