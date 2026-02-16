@@ -1,23 +1,30 @@
 /* ============================================
-   LES JUMELLES - SCRIPT OPTIMISÉ POUR 3D
-   Version: 2.0 - Anti-lag
+   LES JUMELLES - SCRIPT PRINCIPAL OPTIMISÉ
+   Version: 3.0 - Chargement toutes les 3 secondes
    ============================================ */
 
 // ============================================
-// INITIALISATION
+// VARIABLES GLOBALES
+// ============================================
+let isLoadingModel = false;
+let modelQueue = [];
+let loadedModelsCount = 0;
+const LOAD_DELAY = 3000; // 3 secondes entre chaque modèle
+
+// ============================================
+// ATTENDRE QUE LE DOM SOIT PRÊT
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Site Les Jumelles chargé !');
+    console.log('✅ Site Les Jumelles chargé avec succès !');
+    console.log('⏱️  Chargement des modèles 3D toutes les 3 secondes');
     
-    // Fonctions légères d'abord
+    // Initialiser les fonctions
     initMobileMenu();
     initActiveNavigation();
-    initBackToTop();
     initReservationForm();
+    initBackToTop();
     initDatePickers();
-    
-    // Charger les modèles 3D UNIQUEMENT quand on voit la section
-    initLazy3DModels();
+    initLazy3DModels(); // ← Chargement des modèles 3D
 });
 
 // ============================================
@@ -38,10 +45,12 @@ function initMobileMenu() {
             spans[0].style.transform = 'rotate(45deg) translateY(7px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translateY(-7px)';
+            document.body.style.overflow = 'hidden';
         } else {
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
+            document.body.style.overflow = '';
         }
     });
 
@@ -53,7 +62,34 @@ function initMobileMenu() {
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
+            document.body.style.overflow = '';
         });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (mobileNav.classList.contains('active') && 
+            !mobileNav.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
+            mobileNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            mobileNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+            document.body.style.overflow = '';
+        }
     });
 }
 
@@ -72,13 +108,13 @@ function initActiveNavigation() {
 }
 
 // ============================================
-// 3. FORMULAIRE DE RÉSERVATION
+// 3. FORMULAIRE DE RÉSERVATION WHATSAPP
 // ============================================
 function initReservationForm() {
     const reservationForm = document.getElementById('reservationForm');
     if (!reservationForm) return;
 
-    const whatsappNumber = '213770189910';
+    const whatsappNumber = '213770189910'; // Numéro WhatsApp du restaurant
 
     reservationForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -110,25 +146,32 @@ function initReservationForm() {
         if (message) whatsappMessage += `\n💬 *Message:*\n${message}`;
 
         window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
-        showNotification('Réservation envoyée !', 'success');
+        showNotification('Réservation envoyée avec succès !', 'success');
         reservationForm.reset();
         initDatePickers();
     });
 }
 
 // ============================================
-// 4. NOTIFICATION
+// 4. NOTIFICATION SYSTEM
 // ============================================
 function showNotification(message, type = 'success') {
+    const oldNotif = document.querySelector('.notification');
+    if (oldNotif) oldNotif.remove();
+    
     const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
+    notification.className = 'notification';
     notification.textContent = message;
+    
+    let bgColor = '#25D366';
+    if (type === 'error') bgColor = '#ff4444';
+    if (type === 'info') bgColor = '#C5A028';
     
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? '#25D366' : '#ff4444'};
+        background: ${bgColor};
         color: white;
         padding: 1rem 2rem;
         border-radius: 5px;
@@ -184,6 +227,18 @@ function initBackToTop() {
     btn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    btn.addEventListener('mouseenter', function() {
+        this.style.background = '#800020';
+        this.style.color = '#C5A028';
+        this.style.transform = 'translateY(-5px)';
+    });
+
+    btn.addEventListener('mouseleave', function() {
+        this.style.background = '#C5A028';
+        this.style.color = '#0A0A0A';
+        this.style.transform = 'translateY(0)';
+    });
 }
 
 // ============================================
@@ -208,95 +263,303 @@ function initDatePickers() {
 }
 
 // ============================================
-// 7. CHARGEMENT LAZY DES MODÈLES 3D (IMPORTANT)
+// 7. CHARGEMENT SÉQUENTIEL DES MODÈLES 3D (TOUTES LES 3 SECONDES)
 // ============================================
 function initLazy3DModels() {
     const modelViewers = document.querySelectorAll('model-viewer');
     
-    if (!modelViewers.length) return;
+    if (!modelViewers.length) {
+        console.log('Aucun modèle 3D trouvé sur cette page');
+        return;
+    }
     
-    console.log(`${modelViewers.length} modèles 3D détectés, chargement différé...`);
+    console.log(`📦 ${modelViewers.length} modèles 3D détectés`);
+    console.log(`⏱️  Chargement programmé toutes les ${LOAD_DELAY/1000} secondes`);
     
-    // Ne charger que les modèles visibles
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const viewer = entry.target;
-                const src = viewer.getAttribute('data-src') || viewer.getAttribute('src');
-                
-                if (src && src !== '' && !viewer.hasAttribute('data-loaded')) {
-                    // Charger le modèle UNIQUEMENT quand il devient visible
-                    setTimeout(() => {
-                        viewer.setAttribute('src', src);
-                        viewer.setAttribute('data-loaded', 'true');
-                        console.log('Modèle 3D chargé:', src.split('/').pop());
-                    }, 100); // Petit délai pour éviter le lag
-                }
-                
-                // Arrêter d'observer une fois chargé
-                observer.unobserve(viewer);
+    // Réinitialiser la file d'attente
+    modelQueue = [];
+    isLoadingModel = false;
+    loadedModelsCount = 0;
+    
+    // Préparer la file d'attente
+    modelViewers.forEach((viewer, index) => {
+        if (viewer.hasAttribute('data-src')) {
+            const src = viewer.getAttribute('data-src');
+            modelQueue.push({
+                element: viewer,
+                src: src,
+                index: index,
+                loaded: false,
+                wrapper: viewer.closest('.model-wrapper')
+            });
+            
+            // S'assurer que l'attribut src est vide
+            if (viewer.hasAttribute('src')) {
+                viewer.removeAttribute('src');
             }
-        });
-    }, {
-        rootMargin: '200px', // Commencer à charger 200px avant d'arriver
-        threshold: 0.01
-    });
-    
-    modelViewers.forEach(viewer => {
-        // Sauvegarder la source et la vider temporairement
-        const originalSrc = viewer.getAttribute('src');
-        if (originalSrc && originalSrc !== '') {
-            viewer.setAttribute('data-src', originalSrc);
-            viewer.removeAttribute('src'); // ← CRUCIAL : enlève la source pour éviter le chargement automatique
+            
+            // Ajouter un indicateur visuel
+            addLoadingIndicator(viewer);
         }
-        observer.observe(viewer);
     });
     
-    // Boutons AR (à activer même si le modèle n'est pas chargé)
-    document.querySelectorAll('.custom-ar-button').forEach(button => {
-        button.addEventListener('click', function() {
-            const modelViewer = this.previousElementSibling;
-            if (modelViewer && modelViewer.tagName === 'MODEL-VIEWER') {
-                // Si le modèle n'est pas encore chargé, le charger d'abord
-                if (!modelViewer.hasAttribute('src') || modelViewer.getAttribute('src') === '') {
-                    const dataSrc = modelViewer.getAttribute('data-src');
-                    if (dataSrc) {
-                        modelViewer.setAttribute('src', dataSrc);
-                        modelViewer.setAttribute('data-loaded', 'true');
-                        // Petit délai pour le chargement
-                        setTimeout(() => {
-                            try {
-                                modelViewer.activateAR();
-                            } catch (e) {
-                                showNotification('Erreur AR', 'error');
-                            }
-                        }, 500);
-                        return;
-                    }
-                }
-                
-                try {
-                    modelViewer.activateAR();
-                } catch (e) {
-                    showNotification('AR non disponible', 'error');
-                }
-            }
-        });
+    // Démarrer le premier chargement après 1 seconde
+    setTimeout(() => {
+        loadNextModelInQueue();
+    }, 1000);
+    
+    // Surveiller le scroll pour charger au fur et à mesure
+    window.addEventListener('scroll', function() {
+        if (!isLoadingModel) {
+            loadNextModelInQueue();
+        }
     });
 }
 
 // ============================================
-// STYLES DES NOTIFICATIONS
+// AJOUTER UN INDICATEUR DE CHARGEMENT
 // ============================================
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInRight {
-        from { transform: translateX(400px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
+function addLoadingIndicator(viewer) {
+    const wrapper = viewer.closest('.model-wrapper');
+    if (!wrapper) return;
+    
+    // Créer un indicateur s'il n'existe pas déjà
+    if (!wrapper.querySelector('.loading-timer')) {
+        const indicator = document.createElement('div');
+        indicator.className = 'loading-timer';
+        indicator.style.cssText = `
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.7);
+            color: #C5A028;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 20;
+            display: none;
+            font-weight: bold;
+        `;
+        wrapper.appendChild(indicator);
     }
-    @keyframes slideOutRight {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(400px); opacity: 0; }
+}
+
+// ============================================
+// CHARGER LE PROCHAIN MODÈLE DANS LA FILE
+// ============================================
+function loadNextModelInQueue() {
+    if (isLoadingModel) return;
+    
+    // Trouver le premier modèle visible non chargé
+    for (let i = 0; i < modelQueue.length; i++) {
+        const item = modelQueue[i];
+        if (!item.loaded && isElementInViewport(item.element)) {
+            loadModelWithDelay(item);
+            break;
+        }
     }
-`;
-document.head.appendChild(style);
+}
+
+// ============================================
+// VÉRIFIER SI UN ÉLÉMENT EST VISIBLE
+// ============================================
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top <= (window.innerHeight + 300) &&
+        rect.bottom >= -100
+    );
+}
+
+// ============================================
+// CHARGER UN MODÈLE AVEC DÉLAI
+// ============================================
+function loadModelWithDelay(item) {
+    if (isLoadingModel || item.loaded) return;
+    
+    isLoadingModel = true;
+    
+    // Afficher le timer
+    const wrapper = item.element.closest('.model-wrapper');
+    const timer = wrapper?.querySelector('.loading-timer');
+    if (timer) {
+        timer.style.display = 'block';
+        timer.textContent = `⏳ Chargement dans 3s...`;
+    }
+    
+    console.log(`⏰ Modèle ${item.index + 1}/${modelQueue.length} - Chargement dans 3 secondes`);
+    
+    // Compterdown avant chargement
+    let secondsLeft = 3;
+    const countdown = setInterval(() => {
+        secondsLeft--;
+        if (timer && secondsLeft > 0) {
+            timer.textContent = `⏳ Chargement dans ${secondsLeft}s...`;
+        }
+    }, 1000);
+    
+    // Charger après 3 secondes
+    setTimeout(() => {
+        clearInterval(countdown);
+        
+        if (timer) {
+            timer.textContent = `📦 Chargement en cours...`;
+        }
+        
+        console.log(`🚀 Chargement du modèle ${item.index + 1}/${modelQueue.length}`);
+        performLoad(item);
+    }, LOAD_DELAY);
+}
+
+// ============================================
+// EFFECTUER LE CHARGEMENT DU MODÈLE
+// ============================================
+function performLoad(item) {
+    item.loaded = true;
+    
+    const viewer = item.element;
+    const src = item.src;
+    const wrapper = item.wrapper;
+    const timer = wrapper?.querySelector('.loading-timer');
+    
+    // Ajouter la classe de chargement
+    viewer.classList.add('model-loading');
+    
+    // Charger le modèle
+    viewer.setAttribute('src', src);
+    
+    // Événement de chargement réussi
+    viewer.addEventListener('load', function onLoad() {
+        viewer.classList.remove('model-loading');
+        viewer.classList.add('model-loaded');
+        
+        loadedModelsCount++;
+        
+        if (timer) {
+            timer.textContent = `✅ Modèle ${loadedModelsCount}/${modelQueue.length} chargé`;
+            setTimeout(() => {
+                timer.style.display = 'none';
+            }, 2000);
+        }
+        
+        console.log(`✅ Modèle ${item.index + 1} chargé avec succès (${loadedModelsCount}/${modelQueue.length})`);
+        
+        isLoadingModel = false;
+        
+        // Charger le suivant après 1 seconde
+        setTimeout(() => {
+            loadNextModelInQueue();
+        }, 1000);
+        
+        viewer.removeEventListener('load', onLoad);
+    }, { once: true });
+    
+    // Événement d'erreur
+    viewer.addEventListener('error', function onError() {
+        viewer.classList.remove('model-loading');
+        
+        if (timer) {
+            timer.textContent = `❌ Erreur de chargement`;
+            setTimeout(() => {
+                timer.style.display = 'none';
+            }, 2000);
+        }
+        
+        console.warn(`❌ Erreur de chargement du modèle ${item.index + 1}`);
+        
+        isLoadingModel = false;
+        
+        // Charger le suivant après 1 seconde même en cas d'erreur
+        setTimeout(() => {
+            loadNextModelInQueue();
+        }, 1000);
+        
+        viewer.removeEventListener('error', onError);
+    }, { once: true });
+}
+
+// ============================================
+// 8. FONCTION AR POUR LES BOUTONS "VOIR À TABLE"
+// ============================================
+function activateAR(modelId) {
+    const modelViewer = document.getElementById(modelId);
+    if (!modelViewer) return;
+    
+    // Si le modèle n'est pas encore chargé, le charger d'abord
+    if (!modelViewer.hasAttribute('src') || modelViewer.getAttribute('src') === '') {
+        const dataSrc = modelViewer.getAttribute('data-src');
+        if (dataSrc) {
+            showNotification('Chargement du modèle 3D...', 'info');
+            
+            modelViewer.setAttribute('src', dataSrc);
+            modelViewer.classList.add('model-loading');
+            
+            modelViewer.addEventListener('load', function onLoad() {
+                modelViewer.classList.remove('model-loading');
+                setTimeout(() => {
+                    try {
+                        modelViewer.activateAR();
+                    } catch (e) {
+                        showNotification('AR non disponible sur ce navigateur', 'error');
+                    }
+                }, 500);
+                modelViewer.removeEventListener('load', onLoad);
+            }, { once: true });
+            
+            modelViewer.addEventListener('error', function onError() {
+                modelViewer.classList.remove('model-loading');
+                showNotification('Erreur de chargement du modèle', 'error');
+                modelViewer.removeEventListener('error', onError);
+            }, { once: true });
+            
+            return;
+        }
+    }
+    
+    // Si le modèle est déjà chargé, activer AR directement
+    try {
+        modelViewer.activateAR();
+    } catch (e) {
+        showNotification('AR non disponible sur ce navigateur', 'error');
+    }
+}
+
+// ============================================
+// 9. STYLES POUR LES NOTIFICATIONS
+// ============================================
+(function addStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(400px); opacity: 0; }
+        }
+        .model-loading {
+            opacity: 0.5;
+            animation: pulse 1.5s infinite;
+        }
+        .model-loaded {
+            opacity: 1;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+})();
+
+// ============================================
+// EXPOSER LES FONCTIONS GLOBALES
+// ============================================
+window.activateAR = activateAR;
+window.showNotification = showNotification;
