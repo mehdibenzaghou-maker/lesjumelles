@@ -386,26 +386,6 @@ model-viewer {
     font-size: 1rem;
 }
 
-.show-plat-button.loading {
-    background: var(--charcoal);
-    cursor: wait;
-    opacity: 0.7;
-}
-
-.show-plat-button.loading i {
-    animation: spin 1s infinite linear;
-}
-
-.show-plat-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
 /* Bouton Voir à table (AR) */
 .custom-ar-button {
     position: absolute;
