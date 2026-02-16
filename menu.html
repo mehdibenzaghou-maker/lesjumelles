@@ -18,46 +18,6 @@
     
     <!-- Lien vers le CSS externe -->
     <link rel="stylesheet" href="style.css">
-    
-    <style>
-        /* Styles supplémentaires pour le chargement séquentiel */
-        .model-loading {
-            opacity: 0.5;
-            animation: pulse 1.5s infinite;
-        }
-        
-        .model-loaded {
-            opacity: 1;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .loading-indicator {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(0,0,0,0.7);
-            color: var(--gold-primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            z-index: 20;
-            display: none;
-        }
-        
-        .model-wrapper.loading .loading-indicator {
-            display: block;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.8; }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
@@ -127,13 +87,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-cesar')">
+                        <button class="show-plat-button" onclick="loadModel('model-cesar', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-cesar')" style="display: none;" id="ar-cesar">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-cesar"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Salade César</h3>
@@ -163,13 +126,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-buratta')">
+                        <button class="show-plat-button" onclick="loadModel('model-buratta', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-buratta')" style="display: none;" id="ar-buratta">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-buratta"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Buratta</h3>
@@ -199,13 +165,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-poulpe')">
+                        <button class="show-plat-button" onclick="loadModel('model-poulpe', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-poulpe')" style="display: none;" id="ar-poulpe">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-poulpe"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Salade de Poulpe</h3>
@@ -235,13 +204,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-crevette')">
+                        <button class="show-plat-button" onclick="loadModel('model-crevette', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-crevette')" style="display: none;" id="ar-crevette">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-crevette"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Trio Crevette à l'Avocat</h3>
@@ -271,13 +243,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-maison')">
+                        <button class="show-plat-button" onclick="loadModel('model-maison', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-maison')" style="display: none;" id="ar-maison">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-maison"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Salade Maison (Jumelles)</h3>
@@ -314,13 +289,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-bourek')">
+                        <button class="show-plat-button" onclick="loadModel('model-bourek', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-bourek')" style="display: none;" id="ar-bourek">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-bourek"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Bourek Fruit de Mer</h3>
@@ -350,13 +328,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-soupe')">
+                        <button class="show-plat-button" onclick="loadModel('model-soupe', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-soupe')" style="display: none;" id="ar-soupe">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-soupe"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Soupe du Jour</h3>
@@ -386,13 +367,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-hrira')">
+                        <button class="show-plat-button" onclick="loadModel('model-hrira', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-hrira')" style="display: none;" id="ar-hrira">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-hrira"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Hrira + Bourek</h3>
@@ -422,13 +406,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-poisson')">
+                        <button class="show-plat-button" onclick="loadModel('model-poisson', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-poisson')" style="display: none;" id="ar-poisson">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-poisson"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Soupe de Poisson</h3>
@@ -458,13 +445,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-brike')">
+                        <button class="show-plat-button" onclick="loadModel('model-brike', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-brike')" style="display: none;" id="ar-brike">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-brike"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Brike Annabien</h3>
@@ -494,13 +484,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-bastila')">
+                        <button class="show-plat-button" onclick="loadModel('model-bastila', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-bastila')" style="display: none;" id="ar-bastila">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-bastila"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Bastila</h3>
@@ -530,13 +523,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-camembert')">
+                        <button class="show-plat-button" onclick="loadModel('model-camembert', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-camembert')" style="display: none;" id="ar-camembert">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-camembert"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Camembert Rôti au Four</h3>
@@ -566,13 +562,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-gratin-poulet')">
+                        <button class="show-plat-button" onclick="loadModel('model-gratin-poulet', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-gratin-poulet')" style="display: none;" id="ar-gratin-poulet">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-gratin-poulet"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Gratin Poulet</h3>
@@ -602,13 +601,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-bastila-fm')">
+                        <button class="show-plat-button" onclick="loadModel('model-bastila-fm', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-bastila-fm')" style="display: none;" id="ar-bastila-fm">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-bastila-fm"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Bastila Fruit de Mer</h3>
@@ -638,13 +640,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-crevettes-jap')">
+                        <button class="show-plat-button" onclick="loadModel('model-crevettes-jap', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-crevettes-jap')" style="display: none;" id="ar-crevettes-jap">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-crevettes-jap"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Crevettes Japonaises</h3>
@@ -674,13 +679,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-gratin-fm')">
+                        <button class="show-plat-button" onclick="loadModel('model-gratin-fm', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-gratin-fm')" style="display: none;" id="ar-gratin-fm">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-gratin-fm"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Gratin Fruits de Mer</h3>
@@ -717,13 +725,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-cordon')">
+                        <button class="show-plat-button" onclick="loadModel('model-cordon', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-cordon')" style="display: none;" id="ar-cordon">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-cordon"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Cordon Bleu</h3>
@@ -753,13 +764,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-supreme')">
+                        <button class="show-plat-button" onclick="loadModel('model-supreme', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-supreme')" style="display: none;" id="ar-supreme">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-supreme"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Suprême de Poulet à la Crème</h3>
@@ -789,13 +803,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-poulet-italien')">
+                        <button class="show-plat-button" onclick="loadModel('model-poulet-italien', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-poulet-italien')" style="display: none;" id="ar-poulet-italien">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-poulet-italien"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Poulet Italien</h3>
@@ -825,13 +842,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-entrecote')">
+                        <button class="show-plat-button" onclick="loadModel('model-entrecote', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-entrecote')" style="display: none;" id="ar-entrecote">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-entrecote"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Entrecôte de Bœuf Grillée</h3>
@@ -861,13 +881,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-medaillon')">
+                        <button class="show-plat-button" onclick="loadModel('model-medaillon', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-medaillon')" style="display: none;" id="ar-medaillon">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-medaillon"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Médaillon de Bœuf</h3>
@@ -897,13 +920,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-foie')">
+                        <button class="show-plat-button" onclick="loadModel('model-foie', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-foie')" style="display: none;" id="ar-foie">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-foie"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Foie d'Agneau</h3>
@@ -933,13 +959,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-filet')">
+                        <button class="show-plat-button" onclick="loadModel('model-filet', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-filet')" style="display: none;" id="ar-filet">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-filet"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Filet de Bœuf</h3>
@@ -969,13 +998,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-noisette')">
+                        <button class="show-plat-button" onclick="loadModel('model-noisette', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-noisette')" style="display: none;" id="ar-noisette">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-noisette"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Noisette d'Agneau</h3>
@@ -1005,13 +1037,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-boucher')">
+                        <button class="show-plat-button" onclick="loadModel('model-boucher', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-boucher')" style="display: none;" id="ar-boucher">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-boucher"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Assiette Boucher</h3>
@@ -1041,13 +1076,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-mechoui')">
+                        <button class="show-plat-button" onclick="loadModel('model-mechoui', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-mechoui')" style="display: none;" id="ar-mechoui">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-mechoui"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Méchoui</h3>
@@ -1077,13 +1115,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-mhamar')">
+                        <button class="show-plat-button" onclick="loadModel('model-mhamar', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-mhamar')" style="display: none;" id="ar-mhamar">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-mhamar"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Mhamar</h3>
@@ -1120,13 +1161,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-tajine-sardine')">
+                        <button class="show-plat-button" onclick="loadModel('model-tajine-sardine', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-tajine-sardine')" style="display: none;" id="ar-tajine-sardine">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-tajine-sardine"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Sardine</h3>
@@ -1156,13 +1200,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-zitoune')">
+                        <button class="show-plat-button" onclick="loadModel('model-zitoune', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-zitoune')" style="display: none;" id="ar-zitoune">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-zitoune"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Zitoune</h3>
@@ -1192,13 +1239,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-dorade')">
+                        <button class="show-plat-button" onclick="loadModel('model-dorade', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-dorade')" style="display: none;" id="ar-dorade">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-dorade"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Dorade</h3>
@@ -1228,13 +1278,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-espadon')">
+                        <button class="show-plat-button" onclick="loadModel('model-espadon', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-espadon')" style="display: none;" id="ar-espadon">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-espadon"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Espadon</h3>
@@ -1264,13 +1317,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-calamar')">
+                        <button class="show-plat-button" onclick="loadModel('model-calamar', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-calamar')" style="display: none;" id="ar-calamar">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-calamar"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Calamar</h3>
@@ -1300,13 +1356,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-viande')">
+                        <button class="show-plat-button" onclick="loadModel('model-viande', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-viande')" style="display: none;" id="ar-viande">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-viande"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Viande</h3>
@@ -1336,13 +1395,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-hlou')">
+                        <button class="show-plat-button" onclick="loadModel('model-hlou', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-hlou')" style="display: none;" id="ar-hlou">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-hlou"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Hlou</h3>
@@ -1372,13 +1434,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-saumon')">
+                        <button class="show-plat-button" onclick="loadModel('model-saumon', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-saumon')" style="display: none;" id="ar-saumon">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-saumon"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Saumon</h3>
@@ -1408,13 +1473,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-tajine-fm')">
+                        <button class="show-plat-button" onclick="loadModel('model-tajine-fm', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-tajine-fm')" style="display: none;" id="ar-tajine-fm">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-tajine-fm"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tajine Fruits de Mer</h3>
@@ -1451,13 +1519,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-safa')">
+                        <button class="show-plat-button" onclick="loadModel('model-safa', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-safa')" style="display: none;" id="ar-safa">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-safa"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Safa</h3>
@@ -1487,13 +1558,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-rechta-poulet')">
+                        <button class="show-plat-button" onclick="loadModel('model-rechta-poulet', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-rechta-poulet')" style="display: none;" id="ar-rechta-poulet">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-rechta-poulet"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Rechta Poulet</h3>
@@ -1523,13 +1597,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-rogag-poulet')">
+                        <button class="show-plat-button" onclick="loadModel('model-rogag-poulet', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-rogag-poulet')" style="display: none;" id="ar-rogag-poulet">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-rogag-poulet"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Rogag Poulet</h3>
@@ -1559,13 +1636,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-couscous-veau')">
+                        <button class="show-plat-button" onclick="loadModel('model-couscous-veau', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-couscous-veau')" style="display: none;" id="ar-couscous-veau">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-couscous-veau"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Couscous Viande de Veau</h3>
@@ -1595,13 +1675,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-rechta-veau')">
+                        <button class="show-plat-button" onclick="loadModel('model-rechta-veau', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-rechta-veau')" style="display: none;" id="ar-rechta-veau">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-rechta-veau"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Rechta Viande de Veau</h3>
@@ -1631,13 +1714,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-rogag-veau')">
+                        <button class="show-plat-button" onclick="loadModel('model-rogag-veau', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-rogag-veau')" style="display: none;" id="ar-rogag-veau">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-rogag-veau"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Rogag Viande de Veau</h3>
@@ -1667,13 +1753,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-mtaouem')">
+                        <button class="show-plat-button" onclick="loadModel('model-mtaouem', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-mtaouem')" style="display: none;" id="ar-mtaouem">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-mtaouem"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Mtaouem</h3>
@@ -1703,13 +1792,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-couscous-royal')">
+                        <button class="show-plat-button" onclick="loadModel('model-couscous-royal', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-couscous-royal')" style="display: none;" id="ar-couscous-royal">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-couscous-royal"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Couscous Royal</h3>
@@ -1739,13 +1831,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-couscous-agneau')">
+                        <button class="show-plat-button" onclick="loadModel('model-couscous-agneau', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-couscous-agneau')" style="display: none;" id="ar-couscous-agneau">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-couscous-agneau"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Couscous Viande d'Agneau</h3>
@@ -1775,13 +1870,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-rechta-agneau')">
+                        <button class="show-plat-button" onclick="loadModel('model-rechta-agneau', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-rechta-agneau')" style="display: none;" id="ar-rechta-agneau">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-rechta-agneau"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Rechta Viande d'Agneau</h3>
@@ -1811,13 +1909,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-rogag-agneau')">
+                        <button class="show-plat-button" onclick="loadModel('model-rogag-agneau', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-rogag-agneau')" style="display: none;" id="ar-rogag-agneau">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-rogag-agneau"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Rogag Viande d'Agneau</h3>
@@ -1854,13 +1955,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-paella-fm')">
+                        <button class="show-plat-button" onclick="loadModel('model-paella-fm', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-paella-fm')" style="display: none;" id="ar-paella-fm">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-paella-fm"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Paella Fruit de Mer</h3>
@@ -1890,13 +1994,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-paella-royal')">
+                        <button class="show-plat-button" onclick="loadModel('model-paella-royal', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-paella-royal')" style="display: none;" id="ar-paella-royal">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-paella-royal"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Paella Royal</h3>
@@ -1926,13 +2033,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-mixe')">
+                        <button class="show-plat-button" onclick="loadModel('model-mixe', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-mixe')" style="display: none;" id="ar-mixe">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-mixe"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Mixé de Poisson pour une Personne</h3>
@@ -1969,13 +2079,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-spaghetti')">
+                        <button class="show-plat-button" onclick="loadModel('model-spaghetti', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-spaghetti')" style="display: none;" id="ar-spaghetti">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-spaghetti"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Spaghetti Bolognaise</h3>
@@ -2005,13 +2118,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-alfredo')">
+                        <button class="show-plat-button" onclick="loadModel('model-alfredo', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-alfredo')" style="display: none;" id="ar-alfredo">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-alfredo"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tagliatelle Alfredo</h3>
@@ -2041,13 +2157,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-norvegien')">
+                        <button class="show-plat-button" onclick="loadModel('model-norvegien', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-norvegien')" style="display: none;" id="ar-norvegien">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-norvegien"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tagliatelle au Norvégien</h3>
@@ -2077,13 +2196,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-tagliatelle-fm')">
+                        <button class="show-plat-button" onclick="loadModel('model-tagliatelle-fm', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-tagliatelle-fm')" style="display: none;" id="ar-tagliatelle-fm">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-tagliatelle-fm"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Tagliatelle Fruit de Mer</h3>
@@ -2120,13 +2242,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-nuggets')">
+                        <button class="show-plat-button" onclick="loadModel('model-nuggets', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-nuggets')" style="display: none;" id="ar-nuggets">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-nuggets"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Nuggets de Poulet</h3>
@@ -2156,13 +2281,16 @@
                             quick-look-browsers="safari chrome">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
-                                <p>Cliquez pour voir le modèle 3D</p>
+                                <p>Modèle 3D non chargé</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="activateAR('model-burger')">
+                        <button class="show-plat-button" onclick="loadModel('model-burger', this)">
+                            <i class="fas fa-eye"></i> Montrez le plat
+                        </button>
+                        <button class="custom-ar-button" onclick="activateAR('model-burger')" style="display: none;" id="ar-burger">
                             <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
-                        <span class="loading-indicator">Chargement...</span>
+                        <span class="loading-indicator" id="indicator-burger"></span>
                     </div>
                     <div class="dish-info">
                         <h3 class="dish-name">Cheese Burger</h3>
@@ -2192,7 +2320,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Script -->
     <script>
         // ============================================
         // MENU MOBILE
@@ -2220,7 +2348,6 @@
                     }
                 });
 
-                // Fermer le menu quand on clique sur un lien
                 document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
                     link.addEventListener('click', function() {
                         mobileNav.classList.remove('active');
@@ -2231,151 +2358,6 @@
                         spans[2].style.transform = 'none';
                         document.body.style.overflow = '';
                     });
-                });
-
-                // Fermer le menu en cliquant à l'extérieur
-                document.addEventListener('click', function(e) {
-                    if (mobileNav.classList.contains('active') && 
-                        !mobileNav.contains(e.target) && 
-                        !menuToggle.contains(e.target)) {
-                        mobileNav.classList.remove('active');
-                        menuToggle.classList.remove('active');
-                        const spans = menuToggle.querySelectorAll('span');
-                        spans[0].style.transform = 'none';
-                        spans[1].style.opacity = '1';
-                        spans[2].style.transform = 'none';
-                        document.body.style.overflow = '';
-                    }
-                });
-            }
-
-            // ============================================
-            // CHARGEMENT SÉQUENTIEL DES MODÈLES 3D (UN PAR UN)
-            // ============================================
-            if (document.querySelector('model-viewer')) {
-                const modelViewers = document.querySelectorAll('model-viewer');
-                const modelQueue = [];
-                let isLoading = false;
-                let currentIndex = 0;
-                
-                console.log(`${modelViewers.length} modèles 3D détectés, chargement séquentiel...`);
-                
-                // Préparer la file d'attente
-                modelViewers.forEach((viewer, index) => {
-                    if (viewer.hasAttribute('data-src')) {
-                        const src = viewer.getAttribute('data-src');
-                        modelQueue.push({
-                            element: viewer,
-                            src: src,
-                            index: index,
-                            loaded: false,
-                            wrapper: viewer.closest('.model-wrapper')
-                        });
-                        
-                        // Vider l'attribut src pour éviter le chargement automatique
-                        if (viewer.hasAttribute('src')) {
-                            viewer.removeAttribute('src');
-                        }
-                    }
-                });
-                
-                // Fonction pour charger le prochain modèle visible
-                function loadNextVisibleModel() {
-                    if (isLoading) return;
-                    
-                    // Chercher le premier modèle non chargé et visible
-                    for (let i = 0; i < modelQueue.length; i++) {
-                        const item = modelQueue[i];
-                        if (!item.loaded && isElementInViewport(item.element)) {
-                            loadModel(item);
-                            break;
-                        }
-                    }
-                }
-                
-                // Vérifier si un élément est visible
-                function isElementInViewport(el) {
-                    const rect = el.getBoundingClientRect();
-                    return (
-                        rect.top <= (window.innerHeight + 300) &&
-                        rect.bottom >= -100
-                    );
-                }
-                
-                // Charger un modèle
-                function loadModel(item) {
-                    if (isLoading || item.loaded) return;
-                    
-                    isLoading = true;
-                    item.loaded = true;
-                    
-                    const viewer = item.element;
-                    const src = item.src;
-                    
-                    console.log(`Chargement du modèle ${item.index + 1}/${modelQueue.length}: ${src.split('/').pop()}`);
-                    
-                    // Ajouter la classe de chargement
-                    viewer.classList.add('model-loading');
-                    if (item.wrapper) {
-                        item.wrapper.classList.add('loading');
-                    }
-                    
-                    // Charger le modèle
-                    viewer.setAttribute('src', src);
-                    
-                    // Événement de chargement réussi
-                    viewer.addEventListener('load', function onLoad() {
-                        viewer.classList.remove('model-loading');
-                        viewer.classList.add('model-loaded');
-                        if (item.wrapper) {
-                            item.wrapper.classList.remove('loading');
-                        }
-                        console.log(`✓ Modèle ${item.index + 1} chargé avec succès`);
-                        
-                        isLoading = false;
-                        
-                        // Attendre un peu avant de charger le suivant
-                        setTimeout(() => {
-                            loadNextVisibleModel();
-                        }, 300);
-                        
-                        viewer.removeEventListener('load', onLoad);
-                    }, { once: true });
-                    
-                    // Événement d'erreur
-                    viewer.addEventListener('error', function onError() {
-                        viewer.classList.remove('model-loading');
-                        if (item.wrapper) {
-                            item.wrapper.classList.remove('loading');
-                        }
-                        console.warn(`✗ Erreur de chargement du modèle ${item.index + 1}`);
-                        
-                        isLoading = false;
-                        
-                        // Attendre un peu avant de charger le suivant même en cas d'erreur
-                        setTimeout(() => {
-                            loadNextVisibleModel();
-                        }, 300);
-                        
-                        viewer.removeEventListener('error', onError);
-                    }, { once: true });
-                }
-                
-                // Démarrer le chargement
-                loadNextVisibleModel();
-                
-                // Surveiller le scroll pour charger au fur et à mesure
-                window.addEventListener('scroll', function() {
-                    if (!isLoading) {
-                        loadNextVisibleModel();
-                    }
-                });
-                
-                // Surveiller le redimensionnement
-                window.addEventListener('resize', function() {
-                    if (!isLoading) {
-                        loadNextVisibleModel();
-                    }
                 });
             }
 
@@ -2392,44 +2374,83 @@
         });
 
         // ============================================
-        // FONCTION AR POUR LES BOUTONS "VOIR À TABLE"
+        // CHARGEMENT MANUEL DES MODÈLES 3D
+        // ============================================
+        function loadModel(modelId, button) {
+            const modelViewer = document.getElementById(modelId);
+            const arButton = document.getElementById('ar-' + modelId.replace('model-', ''));
+            const indicator = document.getElementById('indicator-' + modelId.replace('model-', ''));
+            
+            if (!modelViewer) return;
+            
+            // Désactiver le bouton pendant le chargement
+            button.disabled = true;
+            button.classList.add('loading');
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Chargement...';
+            
+            if (indicator) {
+                indicator.textContent = '⏳ Chargement en cours...';
+                indicator.classList.add('visible');
+            }
+            
+            const dataSrc = modelViewer.getAttribute('data-src');
+            
+            if (dataSrc) {
+                modelViewer.setAttribute('src', dataSrc);
+                modelViewer.classList.add('model-loading');
+                
+                modelViewer.addEventListener('load', function onLoad() {
+                    modelViewer.classList.remove('model-loading');
+                    modelViewer.classList.add('model-loaded');
+                    
+                    if (arButton) {
+                        arButton.style.display = 'inline-flex';
+                    }
+                    
+                    if (indicator) {
+                        indicator.textContent = '✅ Modèle chargé';
+                        setTimeout(() => {
+                            indicator.classList.remove('visible');
+                        }, 2000);
+                    }
+                    
+                    button.innerHTML = '<i class="fas fa-check"></i> Plat chargé';
+                    button.disabled = false;
+                    button.classList.remove('loading');
+                    
+                    setTimeout(() => {
+                        button.innerHTML = '<i class="fas fa-eye"></i> Montrez le plat';
+                    }, 2000);
+                    
+                    modelViewer.removeEventListener('load', onLoad);
+                }, { once: true });
+                
+                modelViewer.addEventListener('error', function onError() {
+                    modelViewer.classList.remove('model-loading');
+                    
+                    if (indicator) {
+                        indicator.textContent = '❌ Erreur de chargement';
+                        setTimeout(() => {
+                            indicator.classList.remove('visible');
+                        }, 2000);
+                    }
+                    
+                    button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Réessayer';
+                    button.disabled = false;
+                    button.classList.remove('loading');
+                    
+                    modelViewer.removeEventListener('error', onError);
+                }, { once: true });
+            }
+        }
+
+        // ============================================
+        // FONCTION AR
         // ============================================
         function activateAR(modelId) {
             const modelViewer = document.getElementById(modelId);
             if (!modelViewer) return;
             
-            // Si le modèle n'est pas encore chargé, le charger d'abord
-            if (!modelViewer.hasAttribute('src') || modelViewer.getAttribute('src') === '') {
-                const dataSrc = modelViewer.getAttribute('data-src');
-                if (dataSrc) {
-                    showNotification('Chargement du modèle 3D...', 'info');
-                    
-                    modelViewer.setAttribute('src', dataSrc);
-                    modelViewer.classList.add('model-loading');
-                    
-                    modelViewer.addEventListener('load', function onLoad() {
-                        modelViewer.classList.remove('model-loading');
-                        setTimeout(() => {
-                            try {
-                                modelViewer.activateAR();
-                            } catch (e) {
-                                showNotification('AR non disponible sur ce navigateur', 'error');
-                            }
-                        }, 500);
-                        modelViewer.removeEventListener('load', onLoad);
-                    }, { once: true });
-                    
-                    modelViewer.addEventListener('error', function onError() {
-                        modelViewer.classList.remove('model-loading');
-                        showNotification('Erreur de chargement du modèle', 'error');
-                        modelViewer.removeEventListener('error', onError);
-                    }, { once: true });
-                    
-                    return;
-                }
-            }
-            
-            // Si le modèle est déjà chargé, activer AR directement
             try {
                 modelViewer.activateAR();
             } catch (e) {
@@ -2438,10 +2459,9 @@
         }
 
         // ============================================
-        // SYSTÈME DE NOTIFICATION SIMPLE
+        // NOTIFICATION
         // ============================================
         function showNotification(message, type = 'success') {
-            // Supprimer les notifications existantes
             const oldNotif = document.querySelector('.notification');
             if (oldNotif) oldNotif.remove();
             
@@ -2449,25 +2469,12 @@
             notification.className = 'notification';
             notification.textContent = message;
             
-            let bgColor = '#25D366'; // success
+            let bgColor = '#C5A028';
             if (type === 'error') bgColor = '#ff4444';
-            if (type === 'info') bgColor = '#C5A028';
             
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: ${bgColor};
-                color: white;
-                padding: 1rem 2rem;
-                border-radius: 5px;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-                z-index: 10000;
-                font-size: 0.95rem;
-                animation: slideInRight 0.3s ease;
-                max-width: 350px;
-            `;
-
+            notification.style.backgroundColor = bgColor;
+            notification.style.color = type === 'error' ? 'white' : '#0A0A0A';
+            
             document.body.appendChild(notification);
             
             setTimeout(() => {
@@ -2475,22 +2482,6 @@
                 setTimeout(() => notification.remove(), 300);
             }, 3000);
         }
-
-        // ============================================
-        // STYLES POUR LES NOTIFICATIONS
-        // ============================================
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideInRight {
-                from { transform: translateX(400px); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOutRight {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(400px); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
