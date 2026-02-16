@@ -7,6 +7,16 @@
     
     <!-- Google Model Viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lien vers le CSS externe -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,7 +24,7 @@
     <header class="main-header">
         <div class="header-content">
             <div class="logo-container">
-                <img src="images/logo.png" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
+                <img src="jmlogo.PNG" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
                 <div class="logo-text">
                     <h1>Les Jumelles</h1>
                     <p class="tagline">Depuis 1920</p>
@@ -70,14 +80,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Salade César"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-cesar">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-cesar').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -101,14 +112,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Buratta"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-buratta">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-buratta').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -132,14 +144,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Salade de Poulpe"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-poulpe">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-poulpe').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -163,14 +176,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Trio Crevette"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-crevette">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-crevette').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -194,14 +208,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Salade Maison"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-maison">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-maison').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -232,14 +247,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Bourek Fruit de Mer"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-bourek">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-bourek').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -263,14 +279,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Soupe du Jour"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-soupe">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-soupe').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -294,14 +311,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Hrira + Bourek"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-hrira">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-hrira').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -325,14 +343,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Soupe de Poisson"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-poisson">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-poisson').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -356,14 +375,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Brike Annabien"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-brike">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-brike').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -387,14 +407,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Bastila"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-bastila">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-bastila').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -418,14 +439,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Camembert Rôti"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-camembert">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-camembert').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -449,14 +471,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Gratin Poulet"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-gratin-poulet">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-gratin-poulet').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -480,14 +503,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Bastila Fruit de Mer"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-bastila-fm">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-bastila-fm').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -511,14 +535,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Crevettes Japonaises"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-crevettes-jap">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-crevettes-jap').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -542,14 +567,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Gratin Fruits de Mer"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-gratin-fm">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-gratin-fm').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -580,14 +606,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Cordon Bleu"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-cordon">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-cordon').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -611,14 +638,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Suprême de Poulet"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-supreme">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-supreme').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -642,14 +670,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Poulet Italien"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-poulet-italien">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-poulet-italien').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -673,14 +702,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Entrecôte de Bœuf"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-entrecote">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-entrecote').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -704,14 +734,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Médaillon de Bœuf"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-medaillon">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-medaillon').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -735,14 +766,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Foie d'Agneau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-foie">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-foie').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -766,14 +798,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Filet de Bœuf"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-filet">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-filet').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -797,14 +830,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Noisette d'Agneau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-noisette">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-noisette').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -828,14 +862,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Assiette Boucher"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-boucher">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-boucher').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -859,14 +894,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Méchoui"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-mechoui">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-mechoui').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -890,14 +926,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Mhamar"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-mhamar">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-mhamar').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -928,14 +965,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Sardine"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-tajine-sardine">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-tajine-sardine').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -959,14 +997,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Zitoune"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-zitoune">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-zitoune').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -990,14 +1029,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Dorade"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-dorade">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-dorade').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1021,14 +1061,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Espadon"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-espadon">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-espadon').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1052,14 +1093,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Calamar"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-calamar">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-calamar').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1083,14 +1125,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Viande"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-viande">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-viande').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1114,14 +1157,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Hlou"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-hlou">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-hlou').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1145,14 +1189,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Saumon"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-saumon">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-saumon').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1176,14 +1221,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tajine Fruits de Mer"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-tajine-fm">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-tajine-fm').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1214,14 +1260,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Safa"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-safa">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-safa').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1245,14 +1292,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Rechta Poulet"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-rechta-poulet">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-rechta-poulet').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1276,14 +1324,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Rogag Poulet"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-rogag-poulet">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-rogag-poulet').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1307,14 +1356,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Couscous Veau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-couscous-veau">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-couscous-veau').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1338,14 +1388,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Rechta Veau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-rechta-veau">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-rechta-veau').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1369,14 +1420,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Rogag Veau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-rogag-veau">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-rogag-veau').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1400,14 +1452,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Mtaouem"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-mtaouem">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-mtaouem').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1431,14 +1484,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Couscous Royal"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-couscous-royal">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-couscous-royal').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1462,14 +1516,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Couscous Agneau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-couscous-agneau">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-couscous-agneau').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1493,14 +1548,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Rechta Agneau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-rechta-agneau">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-rechta-agneau').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1524,14 +1580,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Rogag Agneau"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-rogag-agneau">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-rogag-agneau').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1562,14 +1619,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Paella Fruit de Mer"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-paella-fm">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-paella-fm').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1593,14 +1651,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Paella Royal"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-paella-royal">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-paella-royal').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1624,14 +1683,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Mixé de Poisson"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-mixe">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-mixe').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1662,14 +1722,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Spaghetti Bolognaise"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-spaghetti">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-spaghetti').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1693,14 +1754,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tagliatelle Alfredo"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-alfredo">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-alfredo').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1724,14 +1786,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tagliatelle Norvégien"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-norvegien">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-norvegien').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1755,14 +1818,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Tagliatelle Fruit de Mer"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-tagliatelle-fm">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-tagliatelle-fm').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1793,14 +1857,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Nuggets"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-nuggets">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-nuggets').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1824,14 +1889,15 @@
                             rotation-per-second="30deg"
                             shadow-intensity="1"
                             alt="Cheese Burger"
-                            loading="lazy">
+                            loading="lazy"
+                            id="model-burger">
                             <div class="model-placeholder" slot="poster">
                                 <i class="fas fa-cube"></i>
                                 <p>Chargement 3D...</p>
                             </div>
                         </model-viewer>
-                        <button class="custom-ar-button" onclick="this.previousElementSibling.activateAR()">
-                            <i class="fas fa-cube"></i> Voir en 3D
+                        <button class="custom-ar-button" onclick="document.getElementById('model-burger').activateAR()">
+                            <i class="fas fa-utensils"></i> Voir à table 🍽️
                         </button>
                     </div>
                     <div class="dish-info">
@@ -1863,6 +1929,85 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            if (menuToggle && mobileNav) {
+                menuToggle.addEventListener('click', function() {
+                    mobileNav.classList.toggle('active');
+                    this.classList.toggle('active');
+                    
+                    const spans = this.querySelectorAll('span');
+                    if (this.classList.contains('active')) {
+                        spans[0].style.transform = 'rotate(45deg) translateY(7px)';
+                        spans[1].style.opacity = '0';
+                        spans[2].style.transform = 'rotate(-45deg) translateY(-7px)';
+                    } else {
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    }
+                });
+
+                // Close menu when clicking on a link
+                document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileNav.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        const spans = menuToggle.querySelectorAll('span');
+                        spans[0].style.transform = 'none';
+                        spans[1].style.opacity = '1';
+                        spans[2].style.transform = 'none';
+                    });
+                });
+            }
+
+            // Lazy loading for model-viewer
+            if (document.querySelector('model-viewer')) {
+                const modelViewers = document.querySelectorAll('model-viewer');
+                
+                const modelObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const viewer = entry.target;
+                            const src = viewer.getAttribute('src');
+                            
+                            if (src && src !== '') {
+                                viewer.classList.add('model-loading');
+                                
+                                viewer.addEventListener('load', function() {
+                                    viewer.classList.remove('model-loading');
+                                    viewer.classList.add('model-loaded');
+                                }, { once: true });
+                                
+                                viewer.addEventListener('error', function() {
+                                    viewer.classList.remove('model-loading');
+                                }, { once: true });
+                            }
+                            
+                            modelObserver.unobserve(viewer);
+                        }
+                    });
+                }, {
+                    rootMargin: '200px',
+                    threshold: 0.1
+                });
+
+                modelViewers.forEach(viewer => modelObserver.observe(viewer));
+            }
+
+            // Active navigation link
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
