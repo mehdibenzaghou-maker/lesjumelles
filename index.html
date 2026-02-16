@@ -1,1 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Les Jumelles - Cuisine Raffinée</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts - Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Model Viewer for 3D dishes -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="jmlogo.JPG" alt="Restaurant Les Jumelles Logo" class="logo">
+                <div class="logo-text">
+                    <h1>Les Jumelles</h1>
+                    <p class="tagline">Cuisine d'Excellence</p>
+                </div>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active" data-page="home">Accueil</a></li>
+                    <li><a href="#menu" class="nav-link" data-page="menu">Menu</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
 
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#home" class="nav-link" data-page="home">Accueil</a></li>
+            <li><a href="#menu" class="nav-link" data-page="menu">Menu</a></li>
+            <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        
+        <!-- HOME PAGE -->
+        <section id="home" class="page active-page">
+            <div class="hero-section">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">Bienvenue chez</h2>
+                        <h3 class="hero-name">Les Jumelles</h3>
+                        <div class="golden-line"></div>
+                        <p class="hero-description">
+                            Une expérience gastronomique unique où tradition et excellence se rencontrent.
+                            Découvrez notre cuisine raffinée dans un cadre élégant et chaleureux.
+                        </p>
+                        <button class="cta-button" onclick="navigateToPage('menu')">
+                            Découvrir Notre Menu
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-section">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>Cuisine Raffinée</h3>
+                            <p>Des plats préparés avec passion et des ingrédients de première qualité</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-wine-glass-alt"></i>
+                            </div>
+                            <h3>Cave Exceptionnelle</h3>
+                            <p>Une sélection de vins soigneusement choisis pour accompagner vos repas</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <h3>Ambiance Élégante</h3>
+                            <p>Un cadre raffiné pour des moments inoubliables</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU PAGE -->
+        <section id="menu" class="page">
+            <div class="page-header">
+                <h2 class="page-title">Notre Menu</h2>
+                <div class="golden-line"></div>
+                <p class="page-subtitle">Découvrez nos créations culinaires</p>
+            </div>
+            
+            <div class="container">
+                <!-- Entrées Section -->
+                <div class="menu-section">
+                    <h3 class="section-title">Entrées</h3>
+                    <div class="dishes-grid">
+                        
+                        <div class="dish-card" data-model="entree1.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Foie Gras Maison</h4>
+                                <p class="dish-description">Foie gras mi-cuit, chutney de figues et pain toasté</p>
+                                <span class="dish-price">24€</span>
+                            </div>
+                        </div>
+
+                        <div class="dish-card" data-model="entree2.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Carpaccio de Saint-Jacques</h4>
+                                <p class="dish-description">Saint-Jacques fraîches, agrumes et huile de truffe</p>
+                                <span class="dish-price">26€</span>
+                            </div>
+                        </div>
+
+                        <div class="dish-card" data-model="entree3.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Velouté de Homard</h4>
+                                <p class="dish-description">Crème de homard, croûtons dorés et crème fouettée</p>
+                                <span class="dish-price">22€</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Plats Principaux Section -->
+                <div class="menu-section">
+                    <h3 class="section-title">Plats Principaux</h3>
+                    <div class="dishes-grid">
+                        
+                        <div class="dish-card" data-model="plat1.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Filet de Bœuf Wellington</h4>
+                                <p class="dish-description">Filet mignon en croûte, sauce périgourdine et légumes de saison</p>
+                                <span class="dish-price">48€</span>
+                            </div>
+                        </div>
+
+                        <div class="dish-card" data-model="plat2.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Turbot Rôti</h4>
+                                <p class="dish-description">Turbot entier, beurre blanc et pommes grenaille</p>
+                                <span class="dish-price">52€</span>
+                            </div>
+                        </div>
+
+                        <div class="dish-card" data-model="plat3.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Magret de Canard</h4>
+                                <p class="dish-description">Magret rôti, réduction de porto et purée de céleri</p>
+                                <span class="dish-price">38€</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Desserts Section -->
+                <div class="menu-section">
+                    <h3 class="section-title">Desserts</h3>
+                    <div class="dishes-grid">
+                        
+                        <div class="dish-card" data-model="dessert1.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Soufflé au Grand Marnier</h4>
+                                <p class="dish-description">Soufflé léger à l'orange et Grand Marnier</p>
+                                <span class="dish-price">16€</span>
+                            </div>
+                        </div>
+
+                        <div class="dish-card" data-model="dessert2.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Tarte Tatin</h4>
+                                <p class="dish-description">Tarte aux pommes caramélisées, glace vanille Bourbon</p>
+                                <span class="dish-price">14€</span>
+                            </div>
+                        </div>
+
+                        <div class="dish-card" data-model="dessert3.glb">
+                            <div class="dish-model-container">
+                                <model-viewer
+                                    class="dish-model"
+                                    loading="lazy"
+                                    reveal="interaction"
+                                    camera-controls
+                                    auto-rotate
+                                    auto-rotate-delay="1000"
+                                    rotation-per-second="30deg"
+                                    shadow-intensity="1"
+                                    ar
+                                    ar-modes="webxr scene-viewer quick-look">
+                                    <div class="model-placeholder">
+                                        <i class="fas fa-cube"></i>
+                                        <p>Modèle 3D</p>
+                                    </div>
+                                </model-viewer>
+                            </div>
+                            <div class="dish-info">
+                                <h4 class="dish-name">Crème Brûlée</h4>
+                                <p class="dish-description">Crème brûlée à la vanille de Madagascar</p>
+                                <span class="dish-price">12€</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page">
+            <div class="page-header">
+                <h2 class="page-title">Contactez-Nous</h2>
+                <div class="golden-line"></div>
+                <p class="page-subtitle">Réservez votre table ou contactez-nous</p>
+            </div>
+            
+            <div class="container">
+                <div class="contact-grid">
+                    
+                    <!-- Reservation Form -->
+                    <div class="contact-section">
+                        <h3 class="section-title">Réservation</h3>
+                        <form id="reservationForm" class="reservation-form">
+                            <div class="form-group">
+                                <label for="name">Nom complet *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Téléphone *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="date">Date *</label>
+                                    <input type="date" id="date" name="date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="time">Heure *</label>
+                                    <input type="time" id="time" name="time" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="guests">Nombre de personnes *</label>
+                                <select id="guests" name="guests" required>
+                                    <option value="">Sélectionner...</option>
+                                    <option value="1">1 personne</option>
+                                    <option value="2">2 personnes</option>
+                                    <option value="3">3 personnes</option>
+                                    <option value="4">4 personnes</option>
+                                    <option value="5">5 personnes</option>
+                                    <option value="6">6 personnes</option>
+                                    <option value="7+">7+ personnes</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message (optionnel)</label>
+                                <textarea id="message" name="message" rows="4"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">
+                                <i class="fab fa-whatsapp"></i>
+                                Envoyer via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Information & Map -->
+                    <div class="contact-section">
+                        <h3 class="section-title">Informations</h3>
+                        
+                        <div class="contact-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Adresse</h4>
+                                    <p>123 Avenue de la République<br>75001 Paris, France</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Téléphone</h4>
+                                    <p>+33 1 23 45 67 89</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Horaires</h4>
+                                    <p>Mar - Sam: 12h00 - 14h30, 19h00 - 22h30<br>Dim - Lun: Fermé</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Media -->
+                        <div class="social-media">
+                            <h4>Suivez-nous</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link facebook" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link instagram" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Google Map -->
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.991441731046!2d2.3352934!3d48.8588897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b005%3A0x40b82c3688c9460!2sLouvre%20Museum!5e0!3m2!1sen!2sfr!4v1234567890"
+                                width="100%" 
+                                height="300" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Les Jumelles</h3>
+                    <p>Cuisine d'Excellence</p>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2024 Restaurant Les Jumelles. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
