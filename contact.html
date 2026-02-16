@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact & Réservation | Les Jumelles</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lien vers le CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,7 +21,7 @@
     <header class="main-header">
         <div class="header-content">
             <div class="logo-container">
-                <img src="images/logo.png" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
+                <img src="logojm.PNG" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
                 <div class="logo-text">
                     <h1>Les Jumelles</h1>
                     <p class="tagline">Depuis 1920</p>
@@ -57,34 +67,34 @@
                 <h2 class="form-title">Formulaire de réservation</h2>
                 <form id="reservationForm" class="reservation-form">
                     <div class="form-group">
-                        <label for="name">Nom complet</label>
+                        <label for="name"><i class="fas fa-user"></i> Nom complet</label>
                         <input type="text" id="name" name="name" required placeholder="Votre nom">
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
                         <input type="email" id="email" name="email" required placeholder="votre@email.com">
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">Téléphone</label>
+                        <label for="phone"><i class="fas fa-phone"></i> Téléphone</label>
                         <input type="tel" id="phone" name="phone" required placeholder="05XX XX XX XX">
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="date">Date</label>
+                            <label for="date"><i class="fas fa-calendar"></i> Date</label>
                             <input type="date" id="date" name="date" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="time">Heure</label>
+                            <label for="time"><i class="fas fa-clock"></i> Heure</label>
                             <input type="time" id="time" name="time" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="guests">Nombre de personnes</label>
+                        <label for="guests"><i class="fas fa-users"></i> Nombre de personnes</label>
                         <select id="guests" name="guests" required>
                             <option value="">Sélectionnez</option>
                             <option value="1">1 personne</option>
@@ -101,7 +111,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Message spécial (optionnel)</label>
+                        <label for="message"><i class="fas fa-comment"></i> Message spécial (optionnel)</label>
                         <textarea id="message" name="message" rows="4" placeholder="Allergies, occasions spéciales..."></textarea>
                     </div>
                     
