@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Restaurant Les Jumelles</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Contact & Réservation | Les Jumelles</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-    <!-- Navigation Header -->
+    <!-- Header -->
     <header class="main-header">
         <div class="header-content">
             <div class="logo-container">
-                <img src="jmlogo.PNG" alt="Restaurant Les Jumelles Logo" class="logo" onerror="this.src='https://via.placeholder.com/60x60/D4AF37/FFFFFF?text=JM'">
+                <img src="images/logo.png" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
                 <div class="logo-text">
                     <h1>Les Jumelles</h1>
-                    <p class="tagline">Cuisine d'Excellence</p>
+                    <p class="tagline">Depuis 1920</p>
                 </div>
             </div>
             
@@ -31,11 +22,11 @@
                 <ul>
                     <li><a href="index.html" class="nav-link">Accueil</a></li>
                     <li><a href="menu.html" class="nav-link">Menu</a></li>
-                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                    <li><a href="contact.html" class="nav-link active">Réservation</a></li>
                 </ul>
             </nav>
             
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <button class="mobile-menu-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -48,148 +39,143 @@
         <ul>
             <li><a href="index.html" class="nav-link">Accueil</a></li>
             <li><a href="menu.html" class="nav-link">Menu</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="contact.html" class="nav-link">Réservation</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        
-        <!-- CONTACT PAGE -->
-        <section id="contact" class="page active-page">
-            <div class="page-header">
-                <h1 class="page-title">Contact & Réservation</h1>
-                <div class="golden-line"></div>
-                <p class="page-subtitle">Réservez votre table en quelques clics</p>
+    <!-- Contact Header -->
+    <div class="contact-header">
+        <h1 class="contact-title">Réservation & Contact</h1>
+        <div class="contact-divider"></div>
+        <p class="contact-subtitle">Réservez votre table pour une expérience inoubliable</p>
+    </div>
+
+    <div class="contact-container">
+        <div class="contact-grid">
+            <!-- Formulaire de Réservation -->
+            <div class="contact-form-section">
+                <h2 class="form-title">Formulaire de réservation</h2>
+                <form id="reservationForm" class="reservation-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required placeholder="Votre nom">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="05XX XX XX XX">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="time">Heure</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Nombre de personnes</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Sélectionnez</option>
+                            <option value="1">1 personne</option>
+                            <option value="2">2 personnes</option>
+                            <option value="3">3 personnes</option>
+                            <option value="4">4 personnes</option>
+                            <option value="5">5 personnes</option>
+                            <option value="6">6 personnes</option>
+                            <option value="7">7 personnes</option>
+                            <option value="8">8 personnes</option>
+                            <option value="9">9 personnes</option>
+                            <option value="10">10 personnes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message spécial (optionnel)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Allergies, occasions spéciales..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <i class="fab fa-whatsapp"></i> Envoyer la réservation
+                    </button>
+                </form>
             </div>
             
-            <div class="container">
-                <div class="contact-grid">
-                    
-                    <!-- Reservation Form -->
-                    <div class="contact-section">
-                        <h2>Réservation WhatsApp</h2>
-                        <p class="section-subtitle">Remplissez le formulaire et votre demande sera envoyée par WhatsApp</p>
-                        
-                        <form id="reservationForm" class="reservation-form">
-                            <div class="form-group">
-                                <label for="name"><i class="fas fa-user"></i> Nom complet *</label>
-                                <input type="text" id="name" name="name" required placeholder="Votre nom">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone"><i class="fas fa-phone"></i> Téléphone *</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="05XX XX XX XX">
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="date"><i class="fas fa-calendar"></i> Date *</label>
-                                    <input type="date" id="date" name="date" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="time"><i class="fas fa-clock"></i> Heure *</label>
-                                    <input type="time" id="time" name="time" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="guests"><i class="fas fa-users"></i> Nombre de personnes *</label>
-                                <select id="guests" name="guests" required>
-                                    <option value="">Sélectionnez</option>
-                                    <option value="1">1 personne</option>
-                                    <option value="2">2 personnes</option>
-                                    <option value="3">3 personnes</option>
-                                    <option value="4">4 personnes</option>
-                                    <option value="5">5 personnes</option>
-                                    <option value="6">6 personnes</option>
-                                    <option value="7">7 personnes</option>
-                                    <option value="8">8 personnes</option>
-                                    <option value="9">9 personnes</option>
-                                    <option value="10+">10+ personnes</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message"><i class="fas fa-comment"></i> Message (optionnel)</label>
-                                <textarea id="message" name="message" placeholder="Ajoutez des informations complémentaires..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="submit-button">
-                                <i class="fab fa-whatsapp"></i> Envoyer la réservation
-                            </button>
-                        </form>
-                    </div>
-                    
-                    <!-- Contact Info -->
-                    <div class="contact-section">
-                        <h2>Informations de contact</h2>
-                        
-                        <div class="contact-info">
-                            <div class="info-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <h4>Adresse</h4>
-                                    <p>123 Rue de la Gastronomie<br>16000 Alger, Algérie</p>
-                                </div>
-                            </div>
-                            
-                            <div class="info-item">
-                                <i class="fas fa-phone-alt"></i>
-                                <div>
-                                    <h4>Téléphone</h4>
-                                    <p>+213 (0) 23 45 67 89<br>+213 (0) 23 45 67 90</p>
-                                </div>
-                            </div>
-                            
-                            <div class="info-item">
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>contact@lesjumelles.dz<br>reservation@lesjumelles.dz</p>
-                                </div>
-                            </div>
-                            
-                            <div class="info-item">
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <h4>Horaires d'ouverture</h4>
-                                    <p>Lundi - Vendredi: 12h - 15h | 19h - 23h<br>Samedi - Dimanche: 12h - 16h | 19h - 00h</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="social-media">
-                            <h4>Suivez-nous</h4>
-                            <div class="social-links">
-                                <a href="#" class="social-link facebook" target="_blank" aria-label="Facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="social-link instagram" target="_blank" aria-label="Instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="social-link whatsapp" target="_blank" aria-label="WhatsApp">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Google Maps -->
-                        <div class="map-container">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25576.39793541769!2d3.043477!3d36.753774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128e4a41d3b3b3b3%3A0x3b3b3b3b3b3b3b!2sAlger%20Centre!5e0!3m2!1sfr!2sdz!4v1620000000000!5m2!1sfr!2sdz" 
-                                allowfullscreen="" 
-                                loading="lazy">
-                            </iframe>
+            <!-- Informations de Contact -->
+            <div class="contact-info-section">
+                <h2 class="info-title">Informations</h2>
+                
+                <div class="info-card">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>123 Rue de la Gastronomie<br>16000 Alger, Algérie</p>
                         </div>
                     </div>
                     
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+213 (0) 23 45 67 89<br>+213 (0) 23 45 67 90</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@lesjumelles.dz<br>reservation@lesjumelles.dz</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Horaires d'ouverture</h3>
+                            <p>Lundi - Vendredi: 12h - 15h | 19h - 23h<br>
+                               Samedi - Dimanche: 12h - 16h | 19h - 00h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-section">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link instagram" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link whatsapp" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Google Maps -->
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25576.39793541769!2d3.043477!3d36.753774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x128e4a41d3b3b3b3%3A0x3b3b3b3b3b3b3b!2sAlger%20Centre!5e0!3m2!1sfr!2sdz!4v1620000000000!5m2!1sfr!2sdz" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
                 </div>
             </div>
-        </section>
-
-    </main>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -197,15 +183,16 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <h3>Les Jumelles</h3>
-                    <p>Cuisine d'Excellence</p>
+                    <p>Depuis 1920</p>
                 </div>
                 <div class="footer-text">
-                    <p>&copy; 2024 Restaurant Les Jumelles. Tous droits réservés.</p>
+                    <p>© 2024 Restaurant Les Jumelles - Tous droits réservés</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
 </html>
