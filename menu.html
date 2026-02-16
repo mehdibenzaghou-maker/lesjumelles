@@ -2383,10 +2383,8 @@
             
             if (!modelViewer) return;
             
-            // Désactiver le bouton pendant le chargement
-            button.disabled = true;
-            button.classList.add('loading');
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Chargement...';
+            // Désactiver et cacher le bouton "Montrez le plat"
+            button.style.display = 'none';
             
             if (indicator) {
                 indicator.textContent = '⏳ Chargement en cours...';
@@ -2414,14 +2412,6 @@
                         }, 2000);
                     }
                     
-                    button.innerHTML = '<i class="fas fa-check"></i> Plat chargé';
-                    button.disabled = false;
-                    button.classList.remove('loading');
-                    
-                    setTimeout(() => {
-                        button.innerHTML = '<i class="fas fa-eye"></i> Montrez le plat';
-                    }, 2000);
-                    
                     modelViewer.removeEventListener('load', onLoad);
                 }, { once: true });
                 
@@ -2435,9 +2425,8 @@
                         }, 2000);
                     }
                     
-                    button.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Réessayer';
-                    button.disabled = false;
-                    button.classList.remove('loading');
+                    // Réafficher le bouton en cas d'erreur
+                    button.style.display = 'inline-flex';
                     
                     modelViewer.removeEventListener('error', onError);
                 }, { once: true });
