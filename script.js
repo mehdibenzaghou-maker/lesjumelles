@@ -1,20 +1,23 @@
 /* ============================================
-   LES JUMELLES - SCRIPT PRINCIPAL
-   Version simplifiée et fonctionnelle
+   LES JUMELLES - SCRIPT OPTIMISÉ POUR 3D
+   Version: 2.0 - Anti-lag
    ============================================ */
 
+// ============================================
+// INITIALISATION
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Site Les Jumelles chargé avec succès !');
+    console.log('Site Les Jumelles chargé !');
     
+    // Fonctions légères d'abord
     initMobileMenu();
     initActiveNavigation();
-    initReservationForm();
     initBackToTop();
-    initLazyLoading();
-    initCart();
-    initFavorites();
+    initReservationForm();
     initDatePickers();
-    initModelViewerButtons();
+    
+    // Charger les modèles 3D UNIQUEMENT quand on voit la section
+    initLazy3DModels();
 });
 
 // ============================================
@@ -35,43 +38,23 @@ function initMobileMenu() {
             spans[0].style.transform = 'rotate(45deg) translateY(7px)';
             spans[1].style.opacity = '0';
             spans[2].style.transform = 'rotate(-45deg) translateY(-7px)';
-            document.body.style.overflow = 'hidden';
         } else {
             spans[0].style.transform = 'none';
             spans[1].style.opacity = '1';
             spans[2].style.transform = 'none';
-            document.body.style.overflow = '';
         }
     });
 
     document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
+        link.addEventListener('click', function() {
+            mobileNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        });
     });
-
-    document.addEventListener('click', function(e) {
-        if (mobileNav.classList.contains('active') && 
-            !mobileNav.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
-            closeMobileMenu();
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-            closeMobileMenu();
-        }
-    });
-
-    function closeMobileMenu() {
-        mobileNav.classList.remove('active');
-        menuToggle.classList.remove('active');
-        
-        const spans = menuToggle.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-        document.body.style.overflow = '';
-    }
 }
 
 // ============================================
@@ -89,13 +72,13 @@ function initActiveNavigation() {
 }
 
 // ============================================
-// 3. FORMULAIRE DE RÉSERVATION WHATSAPP
+// 3. FORMULAIRE DE RÉSERVATION
 // ============================================
 function initReservationForm() {
     const reservationForm = document.getElementById('reservationForm');
     if (!reservationForm) return;
 
-    const whatsappNumber = '213770189910'; // À MODIFIER
+    const whatsappNumber = '213770189910';
 
     reservationForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -129,12 +112,12 @@ function initReservationForm() {
         window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
         showNotification('Réservation envoyée !', 'success');
         reservationForm.reset();
-        initDatePickers(); // Reset des dates
+        initDatePickers();
     });
 }
 
 // ============================================
-// 4. SYSTÈME DE NOTIFICATION
+// 4. NOTIFICATION
 // ============================================
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
@@ -201,109 +184,10 @@ function initBackToTop() {
     btn.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    btn.addEventListener('mouseenter', function() {
-        this.style.background = '#800020';
-        this.style.color = '#C5A028';
-        this.style.transform = 'translateY(-5px)';
-    });
-
-    btn.addEventListener('mouseleave', function() {
-        this.style.background = '#C5A028';
-        this.style.color = '#0A0A0A';
-        this.style.transform = 'translateY(0)';
-    });
 }
 
 // ============================================
-// 6. CHARGEMENT PARESSEUX DES IMAGES
-// ============================================
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    if (!images.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-            }
-        });
-    }, { rootMargin: '50px' });
-
-    images.forEach(img => observer.observe(img));
-}
-
-// ============================================
-// 7. GESTION DU PANIER
-// ============================================
-function initCart() {
-    const addToCartButtons = document.querySelectorAll('[data-add-to-cart]');
-    const cartCount = document.querySelector('[data-cart-count]');
-    
-    if (!addToCartButtons.length) return;
-
-    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-
-    function updateCartCount() {
-        if (cartCount) {
-            cartCount.textContent = cart.length;
-        }
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const item = {
-                id: this.dataset.itemId || Date.now(),
-                name: this.dataset.itemName || 'Article',
-                price: parseFloat(this.dataset.itemPrice) || 0,
-                quantity: 1
-            };
-            cart.push(item);
-            updateCartCount();
-            showNotification(`${item.name} ajouté au panier`);
-        });
-    });
-
-    updateCartCount();
-}
-
-// ============================================
-// 8. GESTION DES FAVORIS
-// ============================================
-function initFavorites() {
-    const favButtons = document.querySelectorAll('[data-favorite]');
-    if (!favButtons.length) return;
-
-    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    favButtons.forEach(button => {
-        const itemId = button.dataset.favorite;
-
-        if (favorites.includes(itemId)) {
-            button.classList.add('active');
-        }
-
-        button.addEventListener('click', function() {
-            if (favorites.includes(itemId)) {
-                favorites = favorites.filter(id => id !== itemId);
-                this.classList.remove('active');
-                showNotification('Retiré des favoris');
-            } else {
-                favorites.push(itemId);
-                this.classList.add('active');
-                showNotification('Ajouté aux favoris');
-            }
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-        });
-    });
-}
-
-// ============================================
-// 9. DATE PICKERS
+// 6. DATE PICKERS
 // ============================================
 function initDatePickers() {
     const dateInput = document.getElementById('date');
@@ -316,17 +200,6 @@ function initDatePickers() {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         dateInput.value = tomorrow.toISOString().split('T')[0];
-
-        dateInput.addEventListener('change', function() {
-            const selected = new Date(this.value);
-            const today = new Date();
-            today.setHours(0,0,0,0);
-            
-            if (selected < today) {
-                showNotification('Date invalide', 'error');
-                this.value = today.toISOString().split('T')[0];
-            }
-        });
     }
 
     if (timeInput) {
@@ -335,17 +208,77 @@ function initDatePickers() {
 }
 
 // ============================================
-// 10. BOUTONS MODEL-VIEWER (AR)
+// 7. CHARGEMENT LAZY DES MODÈLES 3D (IMPORTANT)
 // ============================================
-function initModelViewerButtons() {
+function initLazy3DModels() {
+    const modelViewers = document.querySelectorAll('model-viewer');
+    
+    if (!modelViewers.length) return;
+    
+    console.log(`${modelViewers.length} modèles 3D détectés, chargement différé...`);
+    
+    // Ne charger que les modèles visibles
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const viewer = entry.target;
+                const src = viewer.getAttribute('data-src') || viewer.getAttribute('src');
+                
+                if (src && src !== '' && !viewer.hasAttribute('data-loaded')) {
+                    // Charger le modèle UNIQUEMENT quand il devient visible
+                    setTimeout(() => {
+                        viewer.setAttribute('src', src);
+                        viewer.setAttribute('data-loaded', 'true');
+                        console.log('Modèle 3D chargé:', src.split('/').pop());
+                    }, 100); // Petit délai pour éviter le lag
+                }
+                
+                // Arrêter d'observer une fois chargé
+                observer.unobserve(viewer);
+            }
+        });
+    }, {
+        rootMargin: '200px', // Commencer à charger 200px avant d'arriver
+        threshold: 0.01
+    });
+    
+    modelViewers.forEach(viewer => {
+        // Sauvegarder la source et la vider temporairement
+        const originalSrc = viewer.getAttribute('src');
+        if (originalSrc && originalSrc !== '') {
+            viewer.setAttribute('data-src', originalSrc);
+            viewer.removeAttribute('src'); // ← CRUCIAL : enlève la source pour éviter le chargement automatique
+        }
+        observer.observe(viewer);
+    });
+    
+    // Boutons AR (à activer même si le modèle n'est pas chargé)
     document.querySelectorAll('.custom-ar-button').forEach(button => {
         button.addEventListener('click', function() {
             const modelViewer = this.previousElementSibling;
             if (modelViewer && modelViewer.tagName === 'MODEL-VIEWER') {
+                // Si le modèle n'est pas encore chargé, le charger d'abord
+                if (!modelViewer.hasAttribute('src') || modelViewer.getAttribute('src') === '') {
+                    const dataSrc = modelViewer.getAttribute('data-src');
+                    if (dataSrc) {
+                        modelViewer.setAttribute('src', dataSrc);
+                        modelViewer.setAttribute('data-loaded', 'true');
+                        // Petit délai pour le chargement
+                        setTimeout(() => {
+                            try {
+                                modelViewer.activateAR();
+                            } catch (e) {
+                                showNotification('Erreur AR', 'error');
+                            }
+                        }, 500);
+                        return;
+                    }
+                }
+                
                 try {
                     modelViewer.activateAR();
                 } catch (e) {
-                    showNotification('La réalité augmentée n\'est pas disponible sur ce navigateur', 'error');
+                    showNotification('AR non disponible', 'error');
                 }
             }
         });
