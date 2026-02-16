@@ -99,19 +99,28 @@ function closeMobileMenu() {
 let modelObserver = null;
 
 function initLazyLoadModels() {
+    console.log('Initializing lazy load for 3D models...');
+    
     // Clear existing observer if any
     if (modelObserver) {
         modelObserver.disconnect();
+        console.log('Disconnected existing observer');
     }
     
     // Get all dish cards with model viewers
     const dishCards = document.querySelectorAll('.dish-card');
+    console.log(`Found ${dishCards.length} dish cards`);
+    
+    if (dishCards.length === 0) {
+        console.log('No dish cards found, skipping lazy loading initialization');
+        return;
+    }
     
     // Configuration for Intersection Observer
     const observerOptions = {
         root: null, // viewport
-        rootMargin: '50px', // Start loading 50px before element enters viewport
-        threshold: 0.1 // Trigger when 10% of element is visible
+        rootMargin: '100px', // Start loading 100px before element enters viewport
+        threshold: 0.01 // Trigger when 1% of element is visible
     };
     
     // Callback function for observer
@@ -122,35 +131,45 @@ function initLazyLoadModels() {
                 const modelViewer = card.querySelector('model-viewer');
                 const modelPath = card.dataset.model;
                 
-                if (modelViewer && modelPath && !modelViewer.src) {
+                console.log(`Dish card entering viewport: ${modelPath}`);
+                
+                if (modelViewer && modelPath) {
+                    // Check if model is already loaded
+                    if (modelViewer.src) {
+                        console.log(`Model already loaded: ${modelPath}`);
+                        observer.unobserve(card);
+                        return;
+                    }
+                    
                     // Add loading class
                     modelViewer.classList.add('model-loading');
                     
                     // Set the src attribute to trigger loading
                     modelViewer.src = modelPath;
+                    console.log(`Loading model: ${modelPath}`);
                     
                     // Add event listeners for loading states
                     modelViewer.addEventListener('load', function() {
                         modelViewer.classList.remove('model-loading');
                         modelViewer.classList.add('model-loaded');
-                        console.log(`3D model loaded: ${modelPath}`);
-                    });
+                        console.log(`✓ Model loaded successfully: ${modelPath}`);
+                    }, { once: true });
                     
                     modelViewer.addEventListener('error', function(error) {
                         modelViewer.classList.remove('model-loading');
-                        console.error(`Error loading 3D model: ${modelPath}`, error);
+                        console.warn(`✗ Error loading model: ${modelPath}`, error);
                         
                         // Show placeholder on error
                         const placeholder = modelViewer.querySelector('.model-placeholder');
                         if (placeholder) {
                             placeholder.innerHTML = `
                                 <i class="fas fa-exclamation-circle"></i>
-                                <p>Modèle non disponible</p>
+                                <p>Modèle 3D<br><small>(fichier .glb requis)</small></p>
                             `;
                         }
-                    });
+                    }, { once: true });
                     
-                    // Stop observing this element once loaded
+                    // Stop observing this element once we've started loading
                     observer.unobserve(card);
                 }
             }
@@ -159,11 +178,15 @@ function initLazyLoadModels() {
     
     // Create the observer
     modelObserver = new IntersectionObserver(observerCallback, observerOptions);
+    console.log('Intersection Observer created');
     
     // Observe all dish cards
-    dishCards.forEach(card => {
+    dishCards.forEach((card, index) => {
         modelObserver.observe(card);
+        console.log(`Observing dish card ${index + 1}/${dishCards.length}`);
     });
+    
+    console.log(`✓ Lazy loading initialized for ${dishCards.length} dishes`);
 }
 
 // ============================================
@@ -436,8 +459,18 @@ document.addEventListener('keydown', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Restaurant Les Jumelles website initialized');
     
-    // Set default page
-    navigateToPage('home');
+    // Initialize lazy loading for 3D models immediately on page load
+    // This is important for separate pages like menu.html
+    setTimeout(() => {
+        initLazyLoadModels();
+        console.log('Lazy loading initialized on page load');
+    }, 100);
+    
+    // Set default page only on index.html (check if navigateToPage should run)
+    const currentPage = window.location.pathname;
+    if (currentPage.includes('index.html') || currentPage === '/' || currentPage.endsWith('/')) {
+        navigateToPage('home');
+    }
     
     // Add focus trap for mobile menu
     const focusableElements = mobileNav?.querySelectorAll('a, button, input, select, textarea');
