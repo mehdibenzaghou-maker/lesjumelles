@@ -3,27 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Les Jumelles - Accueil</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Google Fonts - Elegant Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Les Jumelles | Restaurant d'Exception depuis 1920</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
-    <!-- Navigation Header -->
+    <!-- Header -->
     <header class="main-header">
         <div class="header-content">
             <div class="logo-container">
-                <img src="jmlogo.PNG" alt="Restaurant Les Jumelles Logo" class="logo" onerror="this.src='https://via.placeholder.com/60x60/D4AF37/FFFFFF?text=JM'">
+                <img src="images/logo.png" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
                 <div class="logo-text">
                     <h1>Les Jumelles</h1>
-                    <p class="tagline">Cuisine d'Excellence</p>
+                    <p class="tagline">Depuis 1920</p>
                 </div>
             </div>
             
@@ -31,11 +22,11 @@
                 <ul>
                     <li><a href="index.html" class="nav-link active">Accueil</a></li>
                     <li><a href="menu.html" class="nav-link">Menu</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="contact.html" class="nav-link">Réservation</a></li>
                 </ul>
             </nav>
             
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <button class="mobile-menu-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -48,65 +39,60 @@
         <ul>
             <li><a href="index.html" class="nav-link">Accueil</a></li>
             <li><a href="menu.html" class="nav-link">Menu</a></li>
-            <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <li><a href="contact.html" class="nav-link">Réservation</a></li>
         </ul>
     </nav>
 
-    <!-- Main Content Container -->
-    <main class="main-content">
-        
-        <!-- HOME PAGE -->
-        <section id="home" class="page active-page">
-            <div class="hero-section">
-                <div class="hero-overlay"></div>
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h2 class="hero-title">Bienvenue chez</h2>
-                        <h1 class="hero-name">Les Jumelles</h1>
-                        <div class="golden-line"></div>
-                        <p class="hero-description">
-                            Une expérience gastronomique unique où tradition et excellence se rencontrent.
-                            Découvrez notre cuisine raffinée dans un cadre élégant et chaleureux.
-                        </p>
-                        <a href="menu.html" class="cta-button">
-                            Découvrir Notre Menu
-                        </a>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Bienvenue chez</p>
+            <h1 class="hero-title">Les Jumelles</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-description">
+                Une maison de tradition depuis 1920, où l'excellence culinaire 
+                et l'élégance intemporelle se rencontrent.
+            </p>
+            <a href="menu.html" class="hero-button">Découvrir notre carte</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-suptitle">Notre héritage</p>
+                <h2 class="section-title">L'art de vivre à la française</h2>
             </div>
             
-            <div class="features-section">
-                <div class="container">
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                            <h3>Cuisine Raffinée</h3>
-                            <p>Des plats préparés avec passion et des ingrédients de première qualité</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-wine-glass-alt"></i>
-                            </div>
-                            <h3>Cave Exceptionnelle</h3>
-                            <p>Une sélection de vins soigneusement choisis pour accompagner vos repas</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-icon">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                            <h3>Ambiance Élégante</h3>
-                            <p>Un cadre raffiné pour des moments inoubliables</p>
-                        </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
                     </div>
+                    <h3>Cuisine d'Exception</h3>
+                    <p>Des recettes transmises depuis quatre générations, préparées avec les produits les plus nobles.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <h3>Cave Prestigieuse</h3>
+                    <p>Une sélection unique de grands crus et de champagnes rares pour accompagner vos repas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Service Royal</h3>
+                    <p>Un personnel attentif et discret pour faire de chaque visite un moment inoubliable.</p>
                 </div>
             </div>
-        </section>
-
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -114,15 +100,16 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <h3>Les Jumelles</h3>
-                    <p>Cuisine d'Excellence</p>
+                    <p>Depuis 1920</p>
                 </div>
                 <div class="footer-text">
-                    <p>&copy; 2024 Restaurant Les Jumelles. Tous droits réservés.</p>
+                    <p>© 2024 Restaurant Les Jumelles - Tous droits réservés</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
 </body>
 </html>
