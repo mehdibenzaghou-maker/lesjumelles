@@ -95,7 +95,7 @@ function initReservationForm() {
     const reservationForm = document.getElementById('reservationForm');
     if (!reservationForm) return;
 
-    const whatsappNumber = '213123456789'; // À MODIFIER
+    const whatsappNumber = '213559018411'; // À MODIFIER
 
     reservationForm.addEventListener('submit', function(e) {
         e.preventDefault();
