@@ -63,9 +63,37 @@
         <p class="menu-subtitle">Une expérience visuelle et gustative unique</p>
     </div>
 
+    <!-- Menu Navigation des Sections -->
+    <div class="menu-nav-sections">
+        <button class="section-nav-btn active" data-section="entrees-froides">
+            <i class="fas fa-snowflake"></i> Entrées Froides
+        </button>
+        <button class="section-nav-btn" data-section="entrees-chaudes">
+            <i class="fas fa-fire"></i> Entrées Chaudes
+        </button>
+        <button class="section-nav-btn" data-section="nos-plats">
+            <i class="fas fa-utensils"></i> Nos Plats
+        </button>
+        <button class="section-nav-btn" data-section="specialites">
+            <i class="fas fa-star"></i> Spécialités
+        </button>
+        <button class="section-nav-btn" data-section="traditions">
+            <i class="fas fa-history"></i> Traditions
+        </button>
+        <button class="section-nav-btn" data-section="poissons">
+            <i class="fas fa-fish"></i> Poissons
+        </button>
+        <button class="section-nav-btn" data-section="pates">
+            <i class="fas fa-egg"></i> Pâtes
+        </button>
+        <button class="section-nav-btn" data-section="enfant">
+            <i class="fas fa-child"></i> Menu Enfant
+        </button>
+    </div>
+
     <div class="menu-container">
         <!-- ENTRÉES FROIDES -->
-        <section class="menu-section">
+        <section id="entrees-froides" class="menu-section active-section">
             <h2 class="section-title">Entrées Froides</h2>
             
             <div class="dishes-grid">
@@ -267,7 +295,7 @@
         </section>
 
         <!-- ENTRÉES CHAUDES -->
-        <section class="menu-section">
+        <section id="entrees-chaudes" class="menu-section">
             <h2 class="section-title">Entrées Chaudes</h2>
             
             <div class="dishes-grid">
@@ -703,7 +731,7 @@
         </section>
 
         <!-- NOS PLATS -->
-        <section class="menu-section">
+        <section id="nos-plats" class="menu-section">
             <h2 class="section-title">Nos Plats</h2>
             
             <div class="dishes-grid">
@@ -1139,7 +1167,7 @@
         </section>
 
         <!-- NOS SPÉCIALITÉS -->
-        <section class="menu-section">
+        <section id="specialites" class="menu-section">
             <h2 class="section-title">Nos Spécialités</h2>
             
             <div class="dishes-grid">
@@ -1497,7 +1525,7 @@
         </section>
 
         <!-- NOS TRADITIONS -->
-        <section class="menu-section">
+        <section id="traditions" class="menu-section">
             <h2 class="section-title">Nos Traditions</h2>
             
             <div class="dishes-grid">
@@ -1933,7 +1961,7 @@
         </section>
 
         <!-- NOS POISSONS -->
-        <section class="menu-section">
+        <section id="poissons" class="menu-section">
             <h2 class="section-title">Nos Poissons</h2>
             
             <div class="dishes-grid">
@@ -2057,7 +2085,7 @@
         </section>
 
         <!-- NOS PÂTES -->
-        <section class="menu-section">
+        <section id="pates" class="menu-section">
             <h2 class="section-title">Nos Pâtes</h2>
             
             <div class="dishes-grid">
@@ -2220,7 +2248,7 @@
         </section>
 
         <!-- MENU ENFANT -->
-        <section class="menu-section">
+        <section id="enfant" class="menu-section">
             <h2 class="section-title">Menu Enfant</h2>
             
             <div class="dishes-grid">
@@ -2359,6 +2387,51 @@
                         document.body.style.overflow = '';
                     });
                 });
+            }
+
+            // ============================================
+            // NAVIGATION ENTRE LES SECTIONS DU MENU
+            // ============================================
+            const sectionButtons = document.querySelectorAll('.section-nav-btn');
+            const sections = document.querySelectorAll('.menu-section');
+
+            function showSection(sectionId) {
+                // Cacher toutes les sections
+                sections.forEach(section => {
+                    section.classList.remove('active-section');
+                });
+                
+                // Afficher la section sélectionnée
+                const activeSection = document.getElementById(sectionId);
+                if (activeSection) {
+                    activeSection.classList.add('active-section');
+                }
+                
+                // Mettre à jour les boutons actifs
+                sectionButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.section === sectionId) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Sauvegarder dans localStorage pour garder la section même après rechargement
+                localStorage.setItem('activeMenuSection', sectionId);
+            }
+
+            sectionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sectionId = this.dataset.section;
+                    showSection(sectionId);
+                });
+            });
+
+            // Charger la dernière section active ou la première par défaut
+            const savedSection = localStorage.getItem('activeMenuSection');
+            if (savedSection && document.getElementById(savedSection)) {
+                showSection(savedSection);
+            } else {
+                showSection('entrees-froides');
             }
 
             // ============================================
