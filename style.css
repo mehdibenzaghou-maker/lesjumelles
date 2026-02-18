@@ -2028,3 +2028,293 @@ model-viewer {
         width: 40px;
     }
 }
+/* ============================================
+   SECTION RAMADAN - Style ancien portrait
+   ============================================ */
+
+.ramadan-section {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, var(--cream), var(--parchment));
+    position: relative;
+    overflow: hidden;
+}
+
+.ramadan-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(45deg, 
+            rgba(197, 160, 40, 0.03) 0px, 
+            rgba(197, 160, 40, 0.03) 2px,
+            transparent 2px, 
+            transparent 10px);
+    pointer-events: none;
+}
+
+.ramadan-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0 2rem;
+}
+
+.ramadan-decoration i {
+    color: var(--gold-primary);
+    font-size: 1.2rem;
+    opacity: 0.5;
+    animation: twinkle 2s infinite;
+}
+
+.ramadan-decoration i:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.ramadan-decoration i:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Programme en 3 points */
+.ramadan-program {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.program-item {
+    text-align: center;
+    position: relative;
+    padding: 1.5rem 2rem;
+    background: var(--ivory);
+    border: 1px solid var(--gold-light);
+    box-shadow: var(--shadow-elegant);
+    min-width: 200px;
+    transition: var(--transition-classic);
+}
+
+.program-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-gold);
+    border-color: var(--gold-primary);
+}
+
+.program-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--gold-primary);
+    color: var(--ebony);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: 2px solid var(--ivory);
+    box-shadow: var(--shadow-gold);
+}
+
+.program-item h3 {
+    font-size: 1.4rem;
+    color: var(--burgundy);
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+}
+
+.program-item p {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    font-style: italic;
+    margin: 0;
+}
+
+/* Galerie photos style portrait ancien */
+.ramadan-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.gallery-frame {
+    position: relative;
+    background: var(--ivory);
+    padding: 1.5rem 1rem 1rem;
+    border: 1px solid var(--gold-light);
+    box-shadow: var(--shadow-deep);
+    transition: var(--transition-classic);
+    transform: rotate(0deg);
+}
+
+.gallery-frame:hover {
+    transform: translateY(-10px) rotate(0.5deg);
+    box-shadow: var(--shadow-gold);
+    border-color: var(--gold-primary);
+}
+
+/* Décoration de cadre ancien */
+.frame-decoration {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid var(--gold-light);
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+.frame-decoration::before,
+.frame-decoration::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--gold-primary);
+    opacity: 0.3;
+}
+
+.frame-decoration::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.frame-decoration::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+}
+
+/* Coins décoratifs supplémentaires */
+.gallery-frame::before,
+.gallery-frame::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--gold-primary);
+    opacity: 0.2;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.gallery-frame::before {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.gallery-frame::after {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--gold-light);
+    filter: sepia(0.2) contrast(1.05);
+    transition: var(--transition-classic);
+}
+
+.gallery-frame:hover .gallery-img {
+    filter: sepia(0) contrast(1.1);
+}
+
+.img-caption {
+    text-align: center;
+    margin-top: 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--burgundy);
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    padding-top: 0.8rem;
+}
+
+.img-caption::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 1px;
+    background: var(--gold-primary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .ramadan-gallery {
+        gap: 2rem;
+    }
+    
+    .gallery-img {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ramadan-program {
+        gap: 2rem;
+    }
+    
+    .program-item {
+        min-width: 180px;
+        padding: 1.2rem 1.5rem;
+    }
+    
+    .ramadan-gallery {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .gallery-img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ramadan-program {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .program-item {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .gallery-img {
+        height: 250px;
+    }
+}
