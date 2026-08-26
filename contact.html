@@ -1,212 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Réservation | Les Jumelles</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Lien vers le CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact · Les Jumelles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="header-content">
-            <div class="logo-container">
-                <img src="jmlogo.PNG" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
-                <div class="logo-text">
-                    <h1>Les Jumelles</h1>
-                    <p class="tagline"></p>
-                </div>
-            </div>
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html" class="nav-link">Accueil</a></li>
-                    <li><a href="menu.html" class="nav-link">Menu</a></li>
-                    <li><a href="contact.html" class="nav-link active">Réservation</a></li>
-                </ul>
-            </nav>
-            
-            <button class="mobile-menu-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+  <div class="wrapper">
+    <header>
+      <div class="logo-container">
+        <img src="https://pub-2f8ac4bc988c4083b70ddee2532f9d07.r2.dev/Insta_Saver_%40restaurant_jumelles_dp_HD.jpg" alt="Les Jumelles Logo" class="logo-img">
+        <h1>Les Jumelles</h1>
+        <p class="subhead">✦ Contact & Réservations ✦</p>
+      </div>
     </header>
 
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav">
-        <ul>
-            <li><a href="index.html" class="nav-link">Accueil</a></li>
-            <li><a href="menu.html" class="nav-link">Menu</a></li>
-            <li><a href="contact.html" class="nav-link">Réservation</a></li>
-        </ul>
+    <nav class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+      <a href="menu-entrees-froides.html"><i class="fas fa-utensils"></i> Menu</a>
+      <a href="contact.html" class="active"><i class="fas fa-phone"></i> Contact</a>
+      <a href="#" class="reservation-btn"><i class="fab fa-whatsapp"></i> Réservation</a>
     </nav>
 
-    <!-- Contact Header -->
-    <div class="contact-header">
-        <h1 class="contact-title">Réservation & Contact</h1>
-        <div class="contact-divider"></div>
-        <p class="contact-subtitle">Réservez votre table pour une expérience inoubliable</p>
-    </div>
-
-    <div class="contact-container">
-        <div class="contact-grid">
-            <!-- Formulaire de Réservation -->
-            <div class="contact-form-section">
-                <h2 class="form-title">Formulaire de réservation</h2>
-                <form id="reservationForm" class="reservation-form">
-                    <div class="form-group">
-                        <label for="name"><i class="fas fa-user"></i> Nom complet</label>
-                        <input type="text" id="name" name="name" required placeholder="Votre nom">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone"><i class="fas fa-phone"></i> Téléphone</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="05XX XX XX XX">
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="date"><i class="fas fa-calendar"></i> Date</label>
-                            <input type="date" id="date" name="date" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="time"><i class="fas fa-clock"></i> Heure</label>
-                            <input type="time" id="time" name="time" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="guests"><i class="fas fa-users"></i> Nombre de personnes</label>
-                        <select id="guests" name="guests" required>
-                            <option value="">Sélectionnez</option>
-                            <option value="1">1 personne</option>
-                            <option value="2">2 personnes</option>
-                            <option value="3">3 personnes</option>
-                            <option value="4">4 personnes</option>
-                            <option value="5">5 personnes</option>
-                            <option value="6">6 personnes</option>
-                            <option value="7">7 personnes</option>
-                            <option value="8">8 personnes</option>
-                            <option value="9">9 personnes</option>
-                            <option value="10">10 personnes</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message"><i class="fas fa-comment"></i> Message spécial (optionnel)</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Allergies, occasions spéciales..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-button">
-                        <i class="fab fa-whatsapp"></i> Envoyer la réservation
-                    </button>
-                </form>
+    <section class="contact-section">
+      <h2>Nous trouver</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-pin golden-text"></i>
+            <div>
+              <h3>Adresse</h3>
+              <p>P946+4M, Oran, Algérie</p>
             </div>
-            
-            <!-- Informations de Contact -->
-            <div class="contact-info-section">
-                <h2 class="info-title">Informations</h2>
-                
-                <div class="info-card">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Adresse</h3>
-                            <p>P946+4M, Oran, Algérie</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h3>Téléphone</h3>
-                            <p>+213 770 18 99 10</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>Restaurantlesjumelles445@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Horaires d'ouverture</h3>
-                            <p>Lundi - Vendredi: 12h - 15h | 19h - 23h<br>
-                               Samedi - Dimanche: 12h - 16h | 19h - 00h</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="social-section">
-                    <h3>Suivez-nous</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/17v8DxvYvU/?mibextid=wwXIfr" target="_blank" class="social-link facebook" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/restaurant_jumelles?igsh=MWJvZW42aG0zajI3Zw==" target="_blank" class="social-link instagram" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://wa.me/213770189910" target="_blank" class="social-link whatsapp" aria-label="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Google Maps - Oran P946+4M -->
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d25578.57096301404!2d-0.641041!3d35.696899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQxJzQ4LjgiTiAwwrAzOCcyNy44Ilc!5e0!3m2!1sfr!2sdz!4v1740168044684!5m2!1sfr!2sdz" 
-                        width="100%" 
-                        height="300" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone golden-text"></i>
+            <div>
+              <h3>Téléphone</h3>
+              <p><a href="tel:+213770189910">+213 770 18 99 10</a></p>
             </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope golden-text"></i>
+            <div>
+              <h3>Email</h3>
+              <p><a href="mailto:Restaurantlesjumelles445@gmail.com">Restaurantlesjumelles445@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock golden-text"></i>
+            <div>
+              <h3>Horaires</h3>
+              <p>Ouvert tous les jours · 12h - 23h</p>
+            </div>
+          </div>
+          <div class="contact-item social-contact">
+            <i class="fas fa-share-alt golden-text"></i>
+            <div>
+              <h3>Suivez-nous</h3>
+              <div class="social-icons">
+                <a href="https://www.instagram.com/restaurant_jumelles/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@restaurantlesjumelles" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="whatsapp-btn"><i class="fab fa-whatsapp"></i></a>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Les Jumelles</h3>
-                    <p></p>
-                </div>
-                <div class="footer-text">
-                    <p>© 2025 Restaurant Les Jumelles - Tous droits réservés</p>
-                </div>
-            </div>
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3242.123456789!2d-0.634567!3d35.712345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQyJzQ0LjUiTiAwwrAzOCcwNC43Ilc!5e1!3m2!1sfr!2sdz!4v1712345678901" width="100%" height="400" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy"></iframe>
         </div>
+      </div>
+    </section>
+
+    <section class="reservation-section">
+      <h2>Réservation <span class="golden-text">WhatsApp</span></h2>
+      <p>Pour toute réservation, contactez-nous directement sur WhatsApp :</p>
+      <a href="https://wa.me/213770189910" class="whatsapp-reservation" target="_blank">
+        <i class="fab fa-whatsapp"></i> Réserver maintenant
+      </a>
+    </section>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.instagram.com/restaurant_jumelles/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@restaurantlesjumelles" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="whatsapp-footer"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p>&copy; 2026 Les Jumelles · Tous droits réservés</p>
     </footer>
+  </div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
