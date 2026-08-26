@@ -1,182 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Jumelles | Restaurant d'Exception </title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Lien vers le CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Jumelles · Restaurant d'exception</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="header-content">
-            <div class="logo-container">
-                <img src="jmlogo.PNG" alt="Les Jumelles" class="logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'65\' height=\'65\' viewBox=\'0 0 65 65\'><circle cx=\'32.5\' cy=\'32.5\' r=\'30\' fill=\'%23C5A028\' stroke=\'%23800020\' stroke-width=\'2\'/><text x=\'32.5\' y=\'42\' font-size=\'28\' text-anchor=\'middle\' fill=\'%23800020\' font-family=\'Cormorant Garamond\'>JM</text></svg>'">
-                <div class="logo-text">
-                    <h1>Les Jumelles</h1>
-                    <p class="tagline"></p>
-                </div>
-            </div>
-            
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html" class="nav-link active">Accueil</a></li>
-                    <li><a href="menu.html" class="nav-link">Menu</a></li>
-                    <li><a href="contact.html" class="nav-link">Réservation</a></li>
-                </ul>
-            </nav>
-            
-            <button class="mobile-menu-toggle" aria-label="Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+  <div class="wrapper">
+    <header>
+      <div class="logo-container">
+        <img src="https://pub-2f8ac4bc988c4083b70ddee2532f9d07.r2.dev/Insta_Saver_%40restaurant_jumelles_dp_HD.jpg" alt="Les Jumelles Logo" class="logo-img">
+        <h1>Les Jumelles</h1>
+        <p class="subhead">✦ Restaurant d'exception · Oran ✦</p>
+      </div>
     </header>
 
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav">
-        <ul>
-            <li><a href="index.html" class="nav-link">Accueil</a></li>
-            <li><a href="menu.html" class="nav-link">Menu</a></li>
-            <li><a href="contact.html" class="nav-link">Réservation</a></li>
-        </ul>
+    <nav class="nav-links">
+      <a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a>
+      <a href="menu-entrees-froides.html"><i class="fas fa-utensils"></i> Menu</a>
+      <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+      <a href="#" class="reservation-btn"><i class="fab fa-whatsapp"></i> Réservation</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <p class="hero-subtitle">Bienvenue chez</p>
-            <h1 class="hero-title">Les Jumelles</h1>
-            <div class="hero-divider"></div>
-            <p class="hero-description">
-                Buffet à volonté tout le mois du Ramadan (Ftour / Shour).
-            </p>
-            <a href="menu.html" class="hero-button">
-                <i class="fas fa-utensils"></i> Découvrir notre carte
-            </a>
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="https://pub-2f8ac4bc988c4083b70ddee2532f9d07.r2.dev/lesjumelles1.mov" type="video/quicktime">
+      </video>
+      <div class="hero-overlay">
+        <h2>L'art de la table</h2>
+        <p>Une expérience culinaire unique dans un cadre d'exception</p>
+      </div>
+    </div>
+
+    <section class="about-section">
+      <h2>Bienvenue chez <span class="golden-text">Les Jumelles</span></h2>
+      <div class="about-content">
+        <p>Installé au cœur d'Oran, <strong>Les Jumelles</strong> vous invite à un voyage gustatif où la tradition rencontre la créativité. Notre chef élabore des plats d'exception à partir des meilleurs produits, dans un cadre élégant aux accents vintage.</p>
+        <p>Que ce soit pour un dîner romantique ou une célébration, chaque moment passé chez nous est une promesse de raffinement et de saveurs inoubliables.</p>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <i class="fas fa-map-marker-alt golden-text"></i>
+          <p>P946+4M, Oran, Algérie</p>
         </div>
+        <div class="info-card">
+          <i class="fas fa-phone golden-text"></i>
+          <p>+213 770 18 99 10</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-envelope golden-text"></i>
+          <p>Restaurantlesjumelles445@gmail.com</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-clock golden-text"></i>
+          <p>Ouvert tous les jours · 12h - 23h</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Section Ramadan -->
-    <section class="ramadan-section">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-suptitle">Mois sacré</p>
-                <h2 class="section-title">Programme du Ramadan</h2>
-                <div class="ramadan-decoration">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-            </div>
-            
-            <div class="ramadan-program">
-                <div class="program-item">
-                    <span class="program-number">1</span>
-                    <h3>Buffet Ftour</h3>
-                    <p>Entrée chaude + Entrée froide + Dessert</p>
-                </div>
-                <div class="program-item">
-                    <span class="program-number">2</span>
-                    <h3>Buffet Gosra</h3>
-                    <p>Zlabya, Chamia & traditions sucrées</p>
-                </div>
-                <div class="program-item">
-                    <span class="program-number">3</span>
-                    <h3>Buffet Shour</h3>
-                    <p>Buffet Shour complet</p>
-                </div>
-            </div>
-            
-            <div class="ramadan-gallery">
-                <!-- Photo 1 - À remplacer par votre URL -->
-                <div class="gallery-frame">
-                    <div class="frame-decoration"></div>
-                    <img src="https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/IMG_2143.jpeg" alt="Buffet Ftour" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x500/C5A028/FFFFFF?text=Photo+Ftour'">
-                    <div class="img-caption"></div>
-                </div>
-                
-                <!-- Photo 2 - À remplacer par votre URL -->
-                <div class="gallery-frame">
-                    <div class="frame-decoration"></div>
-                    <img src="https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/IMG_2144.jpeg" alt="Buffet Gosra" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x500/C5A028/FFFFFF?text=Photo+Gosra'">
-                    <div class="img-caption"></div>
-                </div>
-                
-                <!-- Photo 3 - À remplacer par votre URL -->
-                <div class="gallery-frame">
-                    <div class="frame-decoration"></div>
-                    <img src="https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/IMG_2145.jpeg" alt="Buffet Shour" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x500/C5A028/FFFFFF?text=Photo+Shour'">
-                    <div class="img-caption"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-suptitle">Notre héritage</p>
-                <h2 class="section-title">L'art de vivre</h2>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Cuisine d'Exception</h3>
-                    <p>Des recettes transmises depuis quatre générations, préparées avec les produits les plus nobles.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mug-hot"></i>
-                    </div>
-                    <h3>Boissons Artisanales</h3>
-                    <p>Une sélection raffinée de thés, cafés d'exception et boissons gazeuses artisanales pour accompagner vos repas.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>Service Royal</h3>
-                    <p>Un personnel attentif et discret pour faire de chaque visite un moment inoubliable.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h3>Les Jumelles</h3>
-                    <p></p>
-                </div>
-                <div class="footer-text">
-                    <p>© 2025 Restaurant Les Jumelles - Tous droits réservés</p>
-                </div>
-            </div>
-        </div>
+    <footer>
+      <div class="social-links">
+        <a href="https://www.instagram.com/restaurant_jumelles/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@restaurantlesjumelles" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="whatsapp-footer"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p>&copy; 2026 Les Jumelles · Tous droits réservés</p>
     </footer>
+  </div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
