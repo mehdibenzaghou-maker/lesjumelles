@@ -1,4 +1,8 @@
-/* ===== RESET & BASE ===== */
+/* ========================================
+   LES JUMELLES - VINTAGE BURGUNDY & GOLD
+   ======================================== */
+
+/* ----- RESET & BASE ----- */
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +33,7 @@ body {
   position: relative;
 }
 
-/* ===== TYPOGRAPHY ===== */
+/* ----- TYPOGRAPHY ----- */
 h1, h2, h3, .logo, .golden-text {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
@@ -68,7 +72,7 @@ h2 {
   color: #d4af37;
 }
 
-/* ===== LOGO ===== */
+/* ----- LOGO ----- */
 .logo-container {
   text-align: center;
   margin-bottom: 1rem;
@@ -84,7 +88,7 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
-/* ===== NAVIGATION ===== */
+/* ----- NAVIGATION ----- */
 .nav-links {
   display: flex;
   flex-wrap: wrap;
@@ -131,7 +135,7 @@ h2 {
   color: #fff !important;
 }
 
-/* ===== MENU NAVIGATION ===== */
+/* ----- MENU NAVIGATION ----- */
 .menu-navigation {
   display: flex;
   flex-wrap: wrap;
@@ -162,7 +166,7 @@ h2 {
   background: rgba(212, 175, 55, 0.05);
 }
 
-/* ===== HERO VIDEO ===== */
+/* ----- HERO VIDEO ----- */
 .hero-video {
   position: relative;
   border-radius: 16px;
@@ -202,7 +206,7 @@ h2 {
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
-/* ===== ABOUT SECTION ===== */
+/* ----- ABOUT SECTION ----- */
 .about-section {
   margin-bottom: 2.5rem;
   text-align: center;
@@ -249,7 +253,7 @@ h2 {
   color: #e8d9cc;
 }
 
-/* ===== MENU GRID ===== */
+/* ----- MENU GRID ----- */
 .menu-section {
   margin-bottom: 2.5rem;
 }
@@ -343,7 +347,7 @@ h2 {
   border: 1px solid rgba(184, 134, 11, 0.2);
 }
 
-/* ===== CONTACT PAGE ===== */
+/* ----- CONTACT PAGE ----- */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -451,7 +455,7 @@ h2 {
   margin-right: 0.8rem;
 }
 
-/* ===== FOOTER ===== */
+/* ----- FOOTER ----- */
 footer {
   text-align: center;
   padding-top: 2rem;
@@ -482,7 +486,7 @@ footer p {
   font-size: 0.9rem;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ----- RESPONSIVE ----- */
 @media (max-width: 768px) {
   .wrapper {
     padding: 1rem;
