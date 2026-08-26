@@ -1,3 +1,7 @@
+// ========================================
+// LES JUMELLES - SCRIPT
+// ========================================
+
 // ===== MODEL VIEWER (Three.js) =====
 async function initModelViewers() {
   const containers = document.querySelectorAll('.model-container[data-glb]');
@@ -26,7 +30,7 @@ async function initModelViewers() {
         alpha: true
       });
       renderer.setSize(container.clientWidth, container.clientHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.shadowMap.enabled = true;
       container.appendChild(renderer.domElement);
 
@@ -152,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Initialize model viewers
-  initModelViewers();
+  setTimeout(initModelViewers, 500);
 });
 
 // ===== RE-INIT MODELS ON PAGE LOAD =====
