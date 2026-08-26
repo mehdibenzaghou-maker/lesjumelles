@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrées Chaudes · Les Jumelles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo-container">
+        <img src="https://pub-2f8ac4bc988c4083b70ddee2532f9d07.r2.dev/Insta_Saver_%40restaurant_jumelles_dp_HD.jpg" alt="Les Jumelles Logo" class="logo-img">
+        <h1>Les Jumelles</h1>
+        <p class="subhead">✦ Entrées Chaudes ✦</p>
+      </div>
+    </header>
+
+    <nav class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+      <a href="menu-entrees-froides.html" class="active"><i class="fas fa-utensils"></i> Menu</a>
+      <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+      <a href="#" class="reservation-btn"><i class="fab fa-whatsapp"></i> Réservation</a>
+    </nav>
+
+    <div class="menu-navigation">
+      <a href="menu-entrees-froides.html">Entrées Froides</a>
+      <a href="menu-entrees-chaudes.html" class="active">Entrées Chaudes</a>
+      <a href="menu-specialites.html">Spécialités</a>
+      <a href="menu-plats.html">Plats</a>
+      <a href="menu-tradition.html">Tradition</a>
+      <a href="menu-poissons.html">Poissons</a>
+      <a href="menu-pates.html">Pâtes</a>
+      <a href="menu-enfant.html">Menu Enfant</a>
+    </div>
+
+    <section class="menu-section">
+      <h2>Entrées <span class="golden-text">Chaudes</span></h2>
+      <div class="menu-grid" id="menu-grid"></div>
+    </section>
+
+    <footer>
+      <div class="social-links">
+        <a href="https://www.instagram.com/restaurant_jumelles/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@restaurantlesjumelles" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#" class="whatsapp-footer"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p>&copy; 2026 Les Jumelles · Tous droits réservés</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const menuData = {
+      "Entrées Chaudes": [
+        { name: "HARIRA ORANAISE", price: "400 DA", description: "Tomate, pois chiches, viande, céleri, coriandre", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Hrira%20jm.glb" },
+        { name: "CAMEMBERT ROTI AU FOUR", price: "900 DA", description: "Camembert, miel, noix", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Cjm.glb" },
+        { name: "SOUPE DE LEGUMES", price: "400 DA", description: "Légumes de saison", glb: "" },
+        { name: "SOUPE DE POISSON", price: "800 DA", description: "Poisson de saison", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Marrakchiya.glb" },
+        { name: "BOUREK ALGERIEN", price: "300 DA", description: "Viande hachée, olives vertes, béchamel", glb: "" },
+        { name: "BOUREK FRUITS DE MER", price: "600 DA", description: "Fruits de mer, béchamel", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Borak%20jm.glb" },
+        { name: "BASTILA POULET", price: "800 DA", description: "Poulet, amandes, raisins secs", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Bastila.glb" },
+        { name: "BASTILA FRUITS DE MER", price: "800 DA", description: "Fruits de mer, vermicelles chinois", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Bastilla%20fruit%20de%20mer%20jm.glb" },
+        { name: "BRIK ANNABI", price: "600 DA", description: "Pommes de terre, oignons, thon, olives, piment rouge", glb: "https://pub-2f8ac4bc988c4083b70ddee2532f9d07.r2.dev/brik.glb" },
+        { name: "GRATIN FRUITS DE MER", price: "1700 DA", description: "Fruits de mer, crème, fromage", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Gratin%20jm.glb" },
+        { name: "GRATIN POULET", price: "1000 DA", description: "Poulet, crème, fromage", glb: "https://pub-72b1924cc2494065a2af6bf69f360686.r2.dev/Gratin%20jm.glb" }
+      ]
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const grid = document.getElementById('menu-grid');
+      if (!grid) return;
+
+      const items = menuData["Entrées Chaudes"] || [];
+      
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        
+        let modelHTML = '';
+        if (item.glb && item.glb.trim() !== '') {
+          modelHTML = `<div class="model-container" data-glb="${item.glb}"><div class="model-placeholder"><i class="fas fa-cube"></i><span>Chargement 3D...</span></div></div>`;
+        } else {
+          modelHTML = `<div class="model-container no-model"><i class="fas fa-utensils"></i></div>`;
+        }
+
+        card.innerHTML = `
+          ${modelHTML}
+          <div class="dish-info">
+            <h3>${item.name}</h3>
+            <p class="dish-description">${item.description}</p>
+            <span class="dish-price">${item.price}</span>
+          </div>
+        `;
+        
+        grid.appendChild(card);
+      });
+
+      initModelViewers();
+    });
+  </script>
+</body>
+</html>
